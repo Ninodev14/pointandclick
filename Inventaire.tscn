@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0dqpujw4ecmd"]
+
+[ext_resource type="Script" path="res://inventaire.gd" id="1_5e45d"]
+[ext_resource type="Texture2D" uid="uid://2d8uje6xdejk" path="res://objet_inventaire.png" id="2_8redw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byt3u"]
+size = Vector2(450, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k10ng"]
+size = Vector2(461, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvbnw"]
+size = Vector2(42, 341)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ng5l"]
+size = Vector2(32, 331)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_5e45d")
+
+[node name="ObjetInventaire" type="Sprite2D" parent="."]
+position = Vector2(233, 167)
+texture = ExtResource("2_8redw")
+
+[node name="Area2D" type="Area2D" parent="ObjetInventaire"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjetInventaire/Area2D"]
+position = Vector2(0, -153)
+shape = SubResource("RectangleShape2D_byt3u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ObjetInventaire/Area2D"]
+position = Vector2(1, 157)
+shape = SubResource("RectangleShape2D_k10ng")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ObjetInventaire/Area2D"]
+position = Vector2(240, 6)
+shape = SubResource("RectangleShape2D_hvbnw")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ObjetInventaire/Area2D"]
+position = Vector2(-234, 0)
+shape = SubResource("RectangleShape2D_8ng5l")
