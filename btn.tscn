@@ -39,6 +39,7 @@ offset_left = -15.0
 offset_top = -15.0
 offset_right = 15.0
 offset_bottom = 15.0
+flat = true
 
 [node name="btnAnnim" type="AnimatedSprite2D" parent="Button"]
 texture_filter = 1

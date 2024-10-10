@@ -41,13 +41,14 @@ offset_left = -15.0
 offset_top = -15.0
 offset_right = 15.0
 offset_bottom = 15.0
+flat = true
 
 [node name="cafeAnnim" type="AnimatedSprite2D" parent="cafeBtn"]
 texture_filter = 1
 position = Vector2(15, 15)
 scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_2rju4")
-animation = &"Unpressed"
+animation = &"pressed"
 
 [node name="cafeSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_45apw")

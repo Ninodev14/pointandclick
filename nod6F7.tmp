@@ -8,25 +8,26 @@
 [ext_resource type="Script" path="res://manageur.gd" id="4_xmjoi"]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(0, -1)
+position = Vector2(-2, -2)
 script = ExtResource("1_fbswu")
 
 [node name="Scene1" type="Sprite2D" parent="."]
+position = Vector2(2, 2)
 texture = ExtResource("2_uabg0")
 
 [node name="TextEdit" type="TextEdit" parent="."]
-offset_left = -185.0
-offset_top = -92.0
-offset_right = -68.0
-offset_bottom = -52.0
+offset_left = -183.0
+offset_top = -90.0
+offset_right = -66.0
+offset_bottom = -50.0
 placeholder_text = "Votre texte ici"
 metadata/_edit_use_anchors_ = true
 
 [node name="btn" parent="." instance=ExtResource("1_gk3kj")]
-position = Vector2(235, 49)
+position = Vector2(237, 51)
 
 [node name="Cafe" parent="." instance=ExtResource("2_uwdom")]
-position = Vector2(238, 4)
+position = Vector2(240, 6)
 script = ExtResource("3_7qryl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -44,7 +45,7 @@ offset_left = 102.0
 offset_top = -74.0
 offset_right = 142.0
 offset_bottom = -51.0
-text = "Timer"
+text = "cxc"
 metadata/_edit_use_anchors_ = true
 
 [node name="ResetButton" type="Button" parent="."]
