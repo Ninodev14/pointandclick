@@ -3,11 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bpiwxwcrvkw8u"
-valid=false
+path="res://.godot/imported/cafeSound.mp3-dc674456c0bced8a151a5b615e41de2c.mp3str"
 
 [deps]
 
 source_file="res://cafeSound.mp3"
+dest_files=["res://.godot/imported/cafeSound.mp3-dc674456c0bced8a151a5b615e41de2c.mp3str"]
 
 [params]
 
