@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://h0mdalxmsyr7"]
+
+[ext_resource type="Texture2D" uid="uid://bm570pywt80ie" path="res://cafe.png" id="1_i34aq"]
+[ext_resource type="Texture2D" uid="uid://cko06h2csahcg" path="res://cafe_renverser.png" id="2_53d0o"]
+[ext_resource type="AudioStream" uid="uid://bpiwxwcrvkw8u" path="res://cafeSound.mp3" id="3_45apw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqe6l"]
+atlas = ExtResource("1_i34aq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xw3r"]
+atlas = ExtResource("1_i34aq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rju4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqe6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xw3r")
+}],
+"loop": true,
+"name": &"Unpressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_53d0o")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
+
+[node name="cafe" type="Area2D"]
+
+[node name="cafeBtn" type="Button" parent="."]
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+
+[node name="cafeAnnim" type="AnimatedSprite2D" parent="cafeBtn"]
+texture_filter = 1
+position = Vector2(15, 15)
+scale = Vector2(0.9375, 0.9375)
+sprite_frames = SubResource("SpriteFrames_2rju4")
+animation = &"Unpressed"
+
+[node name="cafeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_45apw")
+volume_db = 3.714

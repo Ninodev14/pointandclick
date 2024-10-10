@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8r83243ombdv"]
+
+[ext_resource type="PackedScene" uid="uid://dl7ke3lprvgax" path="res://btn.tscn" id="1_gk3kj"]
+[ext_resource type="PackedScene" uid="uid://h0mdalxmsyr7" path="res://area_2d.tscn" id="2_uwdom"]
+[ext_resource type="Script" path="res://cafe.gd" id="3_7qryl"]
+[ext_resource type="Script" path="res://manageur.gd" id="4_xmjoi"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-2, -2)
+
+[node name="btn" parent="." instance=ExtResource("1_gk3kj")]
+position = Vector2(7, 7)
+
+[node name="Cafe" parent="." instance=ExtResource("2_uwdom")]
+position = Vector2(65, 10)
+script = ExtResource("3_7qryl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="manageur" type="Node" parent="."]
+script = ExtResource("4_xmjoi")
