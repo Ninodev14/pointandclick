@@ -8,8 +8,8 @@ extends Area2D
 
 func _ready() -> void:
 	bouton.connect("pressed", Callable(self, "_on_bouton_pressed"))
-	bouton.connect("mouse_entered", Callable(self, "_on_mouse_entered"))  # Connexion du signal pour l'entrée de la souris
-	bouton.connect("mouse_exited", Callable(self, "_on_mouse_exited"))    # Connexion du signal pour la sortie de la souris
+	bouton.connect("mouse_entered", Callable(self, "_on_mouse_entered")) 
+	bouton.connect("mouse_exited", Callable(self, "_on_mouse_exited"))
 
 	add_child(timer)
 	timer.wait_time = 0.5 
@@ -32,10 +32,9 @@ func _on_bouton_pressed() -> void:
 func _reset_animation() -> void:
 	btnAnnime.play("Unpressed")
 
-# Méthode appelée lorsque la souris entre dans le bouton
-func _on_mouse_entered() -> void:
-	Manageur.set_hover_cursor()  # Changement du curseur à celui de "hover" lors du survol
 
-# Méthode appelée lorsque la souris sort du bouton
+func _on_mouse_entered() -> void:
+	Manageur.set_hover_cursor() 
+
 func _on_mouse_exited() -> void:
-	Manageur.reset_cursor()  # Réinitialisation du curseur lorsqu'il quitte le bouton
+	Manageur.reset_cursor()  

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8r83243ombdv"]
+[gd_scene load_steps=10 format=3 uid="uid://c8r83243ombdv"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_fbswu"]
 [ext_resource type="PackedScene" uid="uid://dl7ke3lprvgax" path="res://btn.tscn" id="1_gk3kj"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://h0mdalxmsyr7" path="res://area_2d.tscn" id="2_uwdom"]
 [ext_resource type="Script" path="res://cafe.gd" id="3_7qryl"]
 [ext_resource type="Script" path="res://manageur.gd" id="4_xmjoi"]
+[ext_resource type="Script" path="res://grid_container.gd" id="7_3mqsx"]
+[ext_resource type="PackedScene" uid="uid://dvfk5715k8811" path="res://demineurCase.tscn" id="8_komfe"]
+[ext_resource type="Script" path="res://demineur_case.gd" id="9_y5a1t"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -55,57 +58,14 @@ offset_bottom = 128.0
 text = "restart"
 metadata/_edit_use_anchors_ = true
 
-[node name="GridContainer" type="GridContainer" parent="."]
-offset_left = -382.0
-offset_top = 10.0
-offset_right = -338.0
-offset_bottom = 54.0
+[node name="GridContainerDemineur" type="GridContainer" parent="."]
+offset_left = -413.0
+offset_top = 31.0
+offset_right = -318.0
+offset_bottom = 126.0
 columns = 4
+script = ExtResource("7_3mqsx")
 
-[node name="Button" type="Button" parent="GridContainer"]
+[node name="demineurCase" parent="GridContainerDemineur" instance=ExtResource("8_komfe")]
 layout_mode = 2
-
-[node name="Button2" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button3" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button4" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button5" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button6" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button7" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button8" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button9" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button10" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button11" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button12" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button13" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button14" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button15" type="Button" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button16" type="Button" parent="GridContainer"]
-layout_mode = 2
+script = ExtResource("9_y5a1t")
