@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=7 format=3 uid="uid://drbm7jn2ha86t"]
-=======
 [gd_scene load_steps=14 format=3 uid="uid://b0dqpujw4ecmd"]
->>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://inventaire.gd" id="1_5e45d"]
 [ext_resource type="Texture2D" uid="uid://2d8uje6xdejk" path="res://objet_inventaire.png" id="2_8redw"]
@@ -118,7 +114,7 @@ offset_right = 683.0
 offset_bottom = 105.0
 color = Color(0.898588, 0.132705, 0.776274, 1)
 
-[connection signal="gui_input" from="Blue" to="." method="_on_blue_gui_input"]
+[connection signal="gui_input" from="Blue" to="." method="_on_color_rect_gui_input"]
 [connection signal="gui_input" from="orange" to="." method="_on_orange_gui_input"]
 [connection signal="gui_input" from="Vert" to="." method="_on_vert_gui_input"]
 [connection signal="gui_input" from="Rose" to="." method="_on_rose_gui_input"]
