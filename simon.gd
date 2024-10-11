@@ -9,11 +9,11 @@ var current_color_index = 0  # Indice de la couleur actuellement montrée dans l
 var current_round = 1  # Nombre de couleurs à montrer pour cette manche
 
 # Séquence prédéfinie : orange, bleu, vert, orange, rose, bleu
-var predefined_sequence = [0, 3, 1, 0, 2, 3]  # Correspond à l'ordre: orange, bleu, vert, orange, rose, bleu
+var predefined_sequence = [2, 0, 1, 0, 2, 3]  # Correspond à l'ordre: orange, bleu, vert, orange, rose, bleu
 
 func _ready():
 	# Initialisation des boutons de couleur
-	colors = [$orange, $Vert, $Rose, $Blue]  # S'assurer que l'ordre correspond aux indices
+	colors = [$Orange,$Vert ,$Rose, $Bleu]  # S'assurer que l'ordre correspond aux indices
 	# Stocker les couleurs d'origine
 	for color in colors:
 		original_colors.append(color.modulate)
@@ -69,19 +69,21 @@ func _handle_color_click(color_index):
 		current_round = 1  # Recommencer à la première séquence
 		start_new_round()
 
-# Gère les événements pour chaque bouton ColorRect
-func _on_orange_gui_input(event: InputEvent):
+
+func _on_bleu_gui_input(event: InputEvent):
+	if event is InputEventMouseButton and event.pressed:
+		_handle_color_click(3)  # 3 pour Bleu
+
+
+func _on_orange_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		_handle_color_click(0)  # 0 pour Orange
 
-func _on_vert_gui_input(event: InputEvent):
+func _on_vert_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		_handle_color_click(1)  # 1 pour Vert
 
-func _on_rose_gui_input(event: InputEvent):
+
+func _on_rose_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		_handle_color_click(2)  # 2 pour Rose
-
-func _on_blue_gui_input(event: InputEvent):
-	if event is InputEventMouseButton and event.pressed:
-		_handle_color_click(3)  # 3 pour Bleu
