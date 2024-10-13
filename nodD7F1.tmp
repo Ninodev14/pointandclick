@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8r83243ombdv"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_fbswu"]
+[ext_resource type="PackedScene" uid="uid://dl7ke3lprvgax" path="res://btn.tscn" id="1_gk3kj"]
+[ext_resource type="Texture2D" uid="uid://bs5mxgaskhs2y" path="res://scene1.png" id="2_uabg0"]
+[ext_resource type="PackedScene" uid="uid://h0mdalxmsyr7" path="res://area_2d.tscn" id="2_uwdom"]
+[ext_resource type="Script" path="res://cafe.gd" id="3_7qryl"]
+[ext_resource type="Script" path="res://manageur.gd" id="4_xmjoi"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, -1)
+script = ExtResource("1_fbswu")
+
+[node name="Scene1" type="Sprite2D" parent="."]
+texture = ExtResource("2_uabg0")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = -185.0
+offset_top = -92.0
+offset_right = -68.0
+offset_bottom = -52.0
+placeholder_text = "Votre texte ici"
+metadata/_edit_use_anchors_ = true
+
+[node name="btn" parent="." instance=ExtResource("1_gk3kj")]
+position = Vector2(235, 49)
+
+[node name="Cafe" parent="." instance=ExtResource("2_uwdom")]
+position = Vector2(238, 4)
+script = ExtResource("3_7qryl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="manageur" type="Node" parent="."]
+script = ExtResource("4_xmjoi")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 102.0
+offset_top = -74.0
+offset_right = 142.0
+offset_bottom = -51.0
+text = "Timer"
+metadata/_edit_use_anchors_ = true
+
+[node name="ResetButton" type="Button" parent="."]
+offset_left = -142.0
+offset_top = 97.0
+offset_right = -81.0
+offset_bottom = 128.0
+text = "restart"
+metadata/_edit_use_anchors_ = true
+<<<<<<< Updated upstream
+=======
+
+[node name="GridContainerDemineur" type="GridContainer" parent="."]
+offset_left = -271.0
+offset_top = 15.0
+offset_right = -227.0
+offset_bottom = 59.0
+columns = 4
+
+[node name="Button" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button10" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button11" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button12" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button13" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button14" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button15" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+
+[node name="Button16" type="Button" parent="GridContainerDemineur"]
+layout_mode = 2
+>>>>>>> Stashed changes

@@ -4,12 +4,13 @@ extends Area2D
 @onready var bouton = $Button
 @onready var timer = Timer.new()
 @onready var sondBtn : AudioStreamPlayer2D = $btnSound
-@onready var cafeArea = $"../Cafe"
+@onready var loose = $"../loose1"
+@onready var elements_a_dissoudre = [$"../Menue", $"../Aide"]
 
 func _ready() -> void:
 	bouton.connect("pressed", Callable(self, "_on_bouton_pressed"))
-	bouton.connect("mouse_entered", Callable(self, "_on_mouse_entered"))  # Connexion du signal pour l'entrée de la souris
-	bouton.connect("mouse_exited", Callable(self, "_on_mouse_exited"))    # Connexion du signal pour la sortie de la souris
+	bouton.connect("mouse_entered", Callable(self, "_on_mouse_entered")) 
+	bouton.connect("mouse_exited", Callable(self, "_on_mouse_exited"))
 
 	add_child(timer)
 	timer.wait_time = 0.5 
@@ -17,25 +18,31 @@ func _ready() -> void:
 	timer.connect("timeout", Callable(self, "_reset_animation"))
 
 	btnAnnime.play("Unpressed")
-	cafeArea.hide()
+	loose.hide()
 
 func _on_bouton_pressed() -> void:
 	btnAnnime.play("pressed")
 	sondBtn.play()
 	timer.start()
 
-	if cafeArea.visible:
-		cafeArea.hide()
-	else:
-		cafeArea.show()
+	bouton.set_disabled(true)
+
+	_dissoudre_elements()
+
+	await get_tree().create_timer(0.3).timeout
+
+	loose.show()
 
 func _reset_animation() -> void:
 	btnAnnime.play("Unpressed")
 
-# Méthode appelée lorsque la souris entre dans le bouton
 func _on_mouse_entered() -> void:
-	Manageur.set_hover_cursor()  # Changement du curseur à celui de "hover" lors du survol
+	Manageur.set_hover_cursor() 
 
-# Méthode appelée lorsque la souris sort du bouton
 func _on_mouse_exited() -> void:
-	Manageur.reset_cursor()  # Réinitialisation du curseur lorsqu'il quitte le bouton
+	Manageur.reset_cursor()
+
+func _dissoudre_elements() -> void:
+	var tween = create_tween()
+	for element in elements_a_dissoudre:
+		tween.tween_property(element, "modulate:a", 0, 0.15)  # Dissolution en 0.3s

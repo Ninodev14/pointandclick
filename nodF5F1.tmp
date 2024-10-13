@@ -29,7 +29,7 @@ offset_right = 277.0
 offset_bottom = -74.0
 text = "Menue"
 
-[node name="Note" type="TextEdit" parent="."]
+[node name="TextEdit" type="TextEdit" parent="."]
 offset_left = -185.0
 offset_top = -92.0
 offset_right = -68.0
@@ -50,7 +50,7 @@ script = ExtResource("4_xmjoi")
 wait_time = 60.0
 one_shot = true
 
-[node name="TimerLabel" type="Label" parent="."]
+[node name="Label" type="Label" parent="."]
 offset_left = 66.0
 offset_top = -85.0
 offset_right = 111.0
@@ -91,9 +91,8 @@ pivot_offset = Vector2(277, 107)
 text = "f"
 
 [node name="Loose2" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-160, 7)
-scale = Vector2(0.781111, 0.781111)
+position = Vector2(-217, 64)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_vjyno")
 
 [node name="loose1" type="Sprite2D" parent="."]
