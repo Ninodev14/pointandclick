@@ -1,89 +1,97 @@
 extends Node2D
 
-# Variables globales
-var sequence = []  # La séquence complète
-var player_input = []  # L'entrée du joueur
-var colors = []  # Les objets ColorRect correspondant aux couleurs
-var original_colors = []  # Les couleurs d'origine des ColorRect
-var current_color_index = 0  # Indice de la couleur actuellement montrée dans la séquence
-var current_round = 1  # Nombre de couleurs à montrer pour cette manche
+var sequence = [] 
+var player_input = []
+var colors = []
+var original_colors = []
+var current_color_index = 0
+var current_round = 1
+var is_showing_sequence = false
+var is_waiting_for_input = false  # Nouvelle variable d'état
 
 # Séquence prédéfinie : orange, bleu, vert, orange, rose, bleu
 var predefined_sequence = [2, 0, 1, 0, 2, 3]  # Correspond à l'ordre: orange, bleu, vert, orange, rose, bleu
+var auto_timer = null  # Nouveau Timer pour relancer automatiquement la séquence
 
 func _ready():
-	# Initialisation des boutons de couleur
-	colors = [$Orange,$Vert ,$Rose, $Bleu]  # S'assurer que l'ordre correspond aux indices
-	# Stocker les couleurs d'origine
+	colors = [$Orange, $Vert, $Rose, $Bleu]
 	for color in colors:
 		original_colors.append(color.modulate)
+		
+	sequence = predefined_sequence.duplicate()
 
-	# Initialiser la séquence
-	sequence = predefined_sequence.duplicate()  # Dupliquer la séquence prédéfinie pour l'utiliser dans le jeu
+	# Crée un Timer pour réactiver la première séquence toutes les 10 secondes
+	auto_timer = Timer.new()
+	auto_timer.wait_time = 10
+	auto_timer.one_shot = false
+	add_child(auto_timer)
+	
+	# Correction : connecte correctement le signal 'timeout' à la méthode '_on_auto_timer_timeout' avec Callable
+	auto_timer.connect("timeout", Callable(self, "_on_auto_timer_timeout"))
 
-	start_new_round()  # Démarre le jeu
+	auto_timer.start()
 
-# Démarre une nouvelle manche en augmentant le nombre de couleurs à montrer
+	start_new_round()
+
+# Cette fonction est appelée toutes les 10 secondes tant que le joueur n'a pas commencé à jouer
+func _on_auto_timer_timeout():
+	if not is_waiting_for_input:
+		# Si le joueur n'a pas encore commencé à interagir, rejoue la séquence
+		current_round = 1
+		start_new_round()
+
 func start_new_round():
-	player_input.clear()  # Réinitialise les entrées du joueur
-	current_color_index = 0  # Réinitialise l'indice de la séquence
-	show_sequence()  # Montre la séquence actuelle
+	player_input.clear()
+	current_color_index = 0
+	show_sequence()
 
-# Affiche la séquence jusqu'à `current_round`, c'est-à-dire un nombre croissant de couleurs
 func show_sequence():
+	is_showing_sequence = true  # Démarre la séquence
+	is_waiting_for_input = false  # Bloque l'entrée pendant la séquence
 	for i in range(current_round):
-		# Illumine la couleur
 		var color_to_show = sequence[i]
-		colors[color_to_show].modulate = Color(2, 2, 2)  # Change temporairement la couleur en blanc
-		await get_tree().create_timer(0.5).timeout  # Attend 0.5 secondes avant d'éteindre la couleur
-		# Retourne à la couleur d'origine
+		colors[color_to_show].modulate = Color(2, 2, 2)
+		await get_tree().create_timer(0.2).timeout  # Attend 0.2 secondes avant d'éteindre la couleur
 		colors[color_to_show].modulate = original_colors[color_to_show]
-		# Attendre avant de passer à la prochaine couleur
-		await get_tree().create_timer(0.5).timeout  # Petite pause avant la couleur suivante
+		await get_tree().create_timer(0.1).timeout  # Petite pause avant la couleur suivante
+	is_showing_sequence = false  # Fin de la séquence
+	is_waiting_for_input = true  # Permet l'entrée du joueur maintenant
+	auto_timer.stop()  # Arrête le Timer une fois que le joueur peut interagir
 
-	# Après avoir montré la séquence, attendre que le joueur la reproduise
-	print("Joueur, c'est à toi de jouer !")
-
-# Gère l'entrée utilisateur sur chaque bouton ColorRect
 func _handle_color_click(color_index):
+	if is_showing_sequence or not is_waiting_for_input:
+		return  # Ignore l'entrée si la séquence est en cours de présentation ou si l'entrée n'est pas permise
+	
 	if current_color_index < current_round and color_index == sequence[current_color_index]:
-		# Le joueur a cliqué sur la bonne couleur
-		player_input.append(color_index)  # Ajoute l'index de la couleur cliquée par l'utilisateur
-		current_color_index += 1  # Passe à la couleur suivante
+		player_input.append(color_index)
+		current_color_index += 1
 		if current_color_index == current_round:
-			# Le joueur a réussi à reproduire toute la séquence pour ce round
-			print("Séquence correcte !")
 			if current_round < sequence.size():
-				current_round += 1  # Augmente le nombre de couleurs à montrer pour le prochain tour
-				await get_tree().create_timer(1).timeout  # Pause avant de montrer la séquence suivante
-				start_new_round()  # Recommence avec une séquence plus longue
-			else:
-				print("Bravo, tu as fini toute la séquence !")
+				current_round += 1
+				await get_tree().create_timer(0.2).timeout  # Pause avant de montrer la séquence suivante
+				start_new_round()
 		else:
-			# Attendre que le joueur appuie sur la couleur suivante
 			pass
 	else:
 		# Si le joueur a cliqué sur la mauvaise couleur
 		print("Mauvaise séquence ! Game Over.")
 		await get_tree().create_timer(1).timeout  # Petite pause avant de recommencer
-		current_round = 1  # Recommencer à la première séquence
+		current_round = 1
+		auto_timer.start()  # Redémarre le Timer si le joueur perd
 		start_new_round()
-
 
 func _on_bleu_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
-		_handle_color_click(3)  # 3 pour Bleu
+		_handle_color_click(3)
 
-
-func _on_orange_gui_input(event: InputEvent) -> void:
+func _on_orange_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
-		_handle_color_click(0)  # 0 pour Orange
+		_handle_color_click(0)
 
-func _on_vert_gui_input(event: InputEvent) -> void:
+func _on_vert_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
-		_handle_color_click(1)  # 1 pour Vert
+		_handle_color_click(1)
 
-
-func _on_rose_gui_input(event: InputEvent) -> void:
+func _on_rose_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
-		_handle_color_click(2)  # 2 pour Rose
+		_handle_color_click(2)

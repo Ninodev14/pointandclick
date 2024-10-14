@@ -1,14 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8r83243ombdv"]
+[gd_scene load_steps=17 format=3 uid="uid://c8r83243ombdv"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_fbswu"]
 [ext_resource type="PackedScene" uid="uid://dl7ke3lprvgax" path="res://btn.tscn" id="1_gk3kj"]
 [ext_resource type="Texture2D" uid="uid://bs5mxgaskhs2y" path="res://scene1.png" id="2_uabg0"]
 [ext_resource type="Script" path="res://manageur.gd" id="4_xmjoi"]
 [ext_resource type="Texture2D" uid="uid://c5ajdyo4yrk5c" path="res://intense-fiery-explosion-with-billowing-smoke-on-a-transparent-background-png.webp" id="5_lypw1"]
+[ext_resource type="Texture2D" uid="uid://be32uq4gkrbpg" path="res://Loose6.png" id="5_vavaq"]
 [ext_resource type="Texture2D" uid="uid://ccps1nhdkffbx" path="res://loose2.jpg" id="5_vjyno"]
+[ext_resource type="Texture2D" uid="uid://dn20vi87q6kw" path="res://Loose4.jpg" id="6_ia2iw"]
 [ext_resource type="Script" path="res://digicode.gd" id="6_rta18"]
+[ext_resource type="Texture2D" uid="uid://d1m2mq5d4a6ov" path="res://Loose3.png" id="7_vxp6l"]
 [ext_resource type="Texture2D" uid="uid://cglxqkv5502d0" path="res://btnGamma.png" id="8_7ia42"]
 [ext_resource type="Script" path="res://btn_gamma.gd" id="8_vqkph"]
+[ext_resource type="PackedScene" uid="uid://bo3gwqsqii2j0" path="res://Simon.tscn" id="10_cywx8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8xilw"]
 atlas = ExtResource("8_7ia42")
@@ -96,28 +100,51 @@ text = "restart"
 metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = -757.0
-offset_top = -360.0
-offset_right = -713.0
-offset_bottom = -316.0
+offset_left = -1145.0
+offset_top = -394.0
+offset_right = -1101.0
+offset_bottom = -350.0
 pivot_offset = Vector2(477, 110)
 columns = 4
 
 [node name="FlagButton" type="Button" parent="."]
-offset_left = -676.0
-offset_top = -356.0
-offset_right = -584.0
-offset_bottom = -264.0
+offset_left = -1064.0
+offset_top = -390.0
+offset_right = -972.0
+offset_bottom = -298.0
 pivot_offset = Vector2(396, 106)
 text = "d"
 
 [node name="RevealButton" type="Button" parent="."]
-offset_left = -557.0
-offset_top = -357.0
-offset_right = -465.0
-offset_bottom = -265.0
+offset_left = -945.0
+offset_top = -391.0
+offset_right = -853.0
+offset_bottom = -299.0
 pivot_offset = Vector2(277, 107)
 text = "f"
+
+[node name="Loose6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-51, -42)
+texture = ExtResource("5_vavaq")
+
+[node name="Loose5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-138, -7)
+scale = Vector2(0.049293, 0.049293)
+texture = ExtResource("5_vavaq")
+
+[node name="Loose4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-112.71, 1.4452)
+scale = Vector2(0.552111, 0.552111)
+texture = ExtResource("6_ia2iw")
+
+[node name="Loose3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-156, 7)
+scale = Vector2(0.115279, 0.115279)
+texture = ExtResource("7_vxp6l")
 
 [node name="Loose2" type="Sprite2D" parent="."]
 visible = false
@@ -170,7 +197,7 @@ offset_bottom = 127.0
 texture_filter = 1
 position = Vector2(13, 16)
 sprite_frames = SubResource("SpriteFrames_4kbux")
-animation = &"On"
+animation = &"Off"
 
 [node name="btnGamma2" type="Button" parent="btnGamma"]
 offset_left = -118.0
@@ -182,7 +209,7 @@ offset_bottom = 126.0
 texture_filter = 1
 position = Vector2(13, 15)
 sprite_frames = SubResource("SpriteFrames_4kbux")
-animation = &"On"
+animation = &"Off"
 
 [node name="btnGamma3" type="Button" parent="btnGamma"]
 offset_left = -89.0
@@ -194,4 +221,20 @@ offset_bottom = 126.0
 texture_filter = 1
 position = Vector2(14, 17)
 sprite_frames = SubResource("SpriteFrames_4kbux")
-animation = &"On"
+animation = &"Off"
+
+[node name="Simone" parent="." instance=ExtResource("10_cywx8")]
+
+[node name="Vert" parent="Simone" index="2"]
+offset_left = -264.0
+offset_top = -98.0
+offset_right = -224.0
+offset_bottom = -58.0
+
+[node name="Rose" parent="Simone" index="3"]
+offset_left = 143.0
+offset_top = 32.0
+offset_right = 183.0
+offset_bottom = 72.0
+
+[editable path="Simone"]
