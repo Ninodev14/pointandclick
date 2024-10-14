@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8r83243ombdv"]
+[gd_scene load_steps=13 format=3 uid="uid://c8r83243ombdv"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_fbswu"]
 [ext_resource type="PackedScene" uid="uid://dl7ke3lprvgax" path="res://btn.tscn" id="1_gk3kj"]
@@ -7,6 +7,35 @@
 [ext_resource type="Texture2D" uid="uid://c5ajdyo4yrk5c" path="res://intense-fiery-explosion-with-billowing-smoke-on-a-transparent-background-png.webp" id="5_lypw1"]
 [ext_resource type="Texture2D" uid="uid://ccps1nhdkffbx" path="res://loose2.jpg" id="5_vjyno"]
 [ext_resource type="Script" path="res://digicode.gd" id="6_rta18"]
+[ext_resource type="Texture2D" uid="uid://cglxqkv5502d0" path="res://btnGamma.png" id="8_7ia42"]
+[ext_resource type="Script" path="res://btn_gamma.gd" id="8_vqkph"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xilw"]
+atlas = ExtResource("8_7ia42")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vubf7"]
+atlas = ExtResource("8_7ia42")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4kbux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xilw")
+}],
+"loop": true,
+"name": &"Off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vubf7")
+}],
+"loop": true,
+"name": &"On",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -126,3 +155,43 @@ offset_top = 97.0
 offset_right = 140.0
 offset_bottom = 128.0
 text = "0"
+
+[node name="btnGamma" type="Area2D" parent="."]
+visible = false
+script = ExtResource("8_vqkph")
+
+[node name="btnGamma1" type="Button" parent="btnGamma"]
+offset_left = -147.0
+offset_top = 94.0
+offset_right = -121.0
+offset_bottom = 127.0
+
+[node name="btnGammaAnnim" type="AnimatedSprite2D" parent="btnGamma/btnGamma1"]
+texture_filter = 1
+position = Vector2(13, 16)
+sprite_frames = SubResource("SpriteFrames_4kbux")
+animation = &"On"
+
+[node name="btnGamma2" type="Button" parent="btnGamma"]
+offset_left = -118.0
+offset_top = 95.0
+offset_right = -92.0
+offset_bottom = 126.0
+
+[node name="btnGammaAnnim" type="AnimatedSprite2D" parent="btnGamma/btnGamma2"]
+texture_filter = 1
+position = Vector2(13, 15)
+sprite_frames = SubResource("SpriteFrames_4kbux")
+animation = &"On"
+
+[node name="btnGamma3" type="Button" parent="btnGamma"]
+offset_left = -89.0
+offset_top = 93.0
+offset_right = -62.0
+offset_bottom = 126.0
+
+[node name="btnGammaAnnim" type="AnimatedSprite2D" parent="btnGamma/btnGamma3"]
+texture_filter = 1
+position = Vector2(14, 17)
+sprite_frames = SubResource("SpriteFrames_4kbux")
+animation = &"On"

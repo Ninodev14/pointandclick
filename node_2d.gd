@@ -1,12 +1,11 @@
 extends Node2D
 
-# Paramètres du jeu
-@export var grid_size: int = 8  # Grille de 8x8
+@export var grid_size: int = 8 
 @export var initial_cells_to_reveal: Array[Vector2i] = [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4)]  # Coordonnées des cellules à révéler
 
 var bomb_positions: Array[Vector2i] = []
 var grid_cells: Array = []
-var current_cell_position: Vector2i  # Position de la cellule cliquée
+var current_cell_position: Vector2i
 
 @onready var timer = Timer.new()
 @onready var element_to_keep = $Note
@@ -32,8 +31,8 @@ func _ready() -> void:
 	_restore_element_data()
 	set_process(true)
 
-	place_bombs()  # Place les bombes.
-	reveal_initial_cells()  # Révèle 5 cellules initiales au début.
+	place_bombs() 
+	reveal_initial_cells()
 
 	reveal_button.text = "Révéler"
 	flag_button.text = "Drapeau"
@@ -142,15 +141,15 @@ func _on_timer_timeout() -> void:
 
 func _save_element_data() -> void:
 	Manageur.saved_text = element_to_keep.text
-	print("Texte sauvegardé : ", Manageur.saved_text)  # Pour vérifier que la sauvegarde fonctionne
+	print("Texte sauvegardé : ", Manageur.saved_text)
 
 func _restore_element_data() -> void:
 	element_to_keep.text = Manageur.saved_text
-	print("Texte restauré : ", element_to_keep.text)  # Pour vérifier que la restauration fonctionne
+	print("Texte restauré : ", element_to_keep.text)
 
 func _on_reset_button_pressed() -> void:
-	_save_element_data()  # Sauvegarder le texte immédiatement
-	get_tree().reload_current_scene()  # Recharger la scène
-	call_deferred("_restore_element_data")  # Restauration différée du texte
-	timer.start()  # Redémarrer le timer
+	_save_element_data()
+	get_tree().reload_current_scene()
+	call_deferred("_restore_element_data")
+	timer.start()
 	reset_button.disabled = true
