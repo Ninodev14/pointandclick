@@ -5,7 +5,6 @@ extends Area2D
 @onready var timer = Timer.new()
 @onready var sondBtn : AudioStreamPlayer2D = $btnSound
 @onready var loose = $"../loose1"
-@onready var elements_a_dissoudre = [$"../Menue", $"../Aide"]
 
 func _ready() -> void:
 	bouton.connect("pressed", Callable(self, "_on_bouton_pressed"))
@@ -27,7 +26,6 @@ func _on_bouton_pressed() -> void:
 
 	bouton.set_disabled(true)
 
-	_dissoudre_elements()
 
 	await get_tree().create_timer(0.3).timeout
 
@@ -41,8 +39,3 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	Manageur.reset_cursor()
-
-func _dissoudre_elements() -> void:
-	var tween = create_tween()
-	for element in elements_a_dissoudre:
-		tween.tween_property(element, "modulate:a", 0, 0.15)  # Dissolution en 0.3s

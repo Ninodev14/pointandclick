@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c8r83243ombdv"]
+[gd_scene load_steps=38 format=3 uid="uid://c8r83243ombdv"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_fbswu"]
 [ext_resource type="Texture2D" uid="uid://cgkrqi30h2r4x" path="res://scene1.webp" id="2_8fa3a"]
@@ -29,9 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://bwhnvjaqnqf07" path="res://pause.webp" id="21_0x0dy"]
 [ext_resource type="Script" path="res://settings_menu.gd" id="25_genoj"]
 [ext_resource type="AudioStream" uid="uid://bm1u0h8gc0nya" path="res://SonMenu.mp3" id="26_y2ghs"]
-[ext_resource type="PackedScene" uid="uid://bgf35g46fac75" path="res://drop_spot.tscn" id="30_amfal"]
-[ext_resource type="Texture2D" uid="uid://3tw5vmiow8g5" path="res://marteau.png" id="30_exuos"]
-[ext_resource type="Script" path="res://dragable_sprite.gd" id="31_avivv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p642d"]
 atlas = ExtResource("5_sq5rd")
@@ -90,9 +87,6 @@ animations = [{
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n4s56"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyj50"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_koy4j"]
-size = Vector2(529.265, 488.727)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -158,26 +152,26 @@ text = "restart"
 metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = -1031.0
-offset_top = -463.0
-offset_right = -987.0
-offset_bottom = -419.0
+offset_left = -1145.0
+offset_top = -394.0
+offset_right = -1101.0
+offset_bottom = -350.0
 pivot_offset = Vector2(477, 110)
 columns = 4
 
 [node name="FlagButton" type="Button" parent="."]
-offset_left = -950.0
-offset_top = -459.0
-offset_right = -858.0
-offset_bottom = -367.0
+offset_left = -1064.0
+offset_top = -390.0
+offset_right = -972.0
+offset_bottom = -298.0
 pivot_offset = Vector2(396, 106)
 text = "d"
 
 [node name="RevealButton" type="Button" parent="."]
-offset_left = -831.0
-offset_top = -460.0
-offset_right = -739.0
-offset_bottom = -368.0
+offset_left = -945.0
+offset_top = -391.0
+offset_right = -853.0
+offset_bottom = -299.0
 pivot_offset = Vector2(277, 107)
 text = "f"
 
@@ -311,51 +305,44 @@ offset_bottom = 119.0
 script = ExtResource("17_uhe3k")
 
 [node name="C" type="Button" parent="Cafe"]
-offset_left = 256.0
-offset_top = -57.0
-offset_right = 268.0
+offset_left = 263.5
+offset_top = -49.0
+offset_right = 271.5
 offset_bottom = -41.0
-flat = true
 
 [node name="C" type="Sprite2D" parent="Cafe/C"]
 texture_filter = 1
-position = Vector2(6, 8)
 texture = ExtResource("15_8j55q")
 
 [node name="A" type="Button" parent="Cafe"]
-offset_left = 271.0
-offset_top = -57.0
-offset_right = 281.0
-offset_bottom = -41.0
-flat = true
+offset_left = 527.0
+offset_top = -98.0
+offset_right = 535.0
+offset_bottom = -90.0
 
 [node name="A" type="Sprite2D" parent="Cafe/A"]
 texture_filter = 1
-position = Vector2(5, 8)
+position = Vector2(-250.5, 49)
 texture = ExtResource("16_dl7jb")
 
 [node name="F" type="Button" parent="Cafe"]
-offset_left = 283.0
-offset_top = -57.0
-offset_right = 293.0
+offset_left = 288.5
+offset_top = -49.0
+offset_right = 296.5
 offset_bottom = -41.0
-flat = true
 
 [node name="F" type="Sprite2D" parent="Cafe/F"]
 texture_filter = 1
-position = Vector2(5, 8)
 texture = ExtResource("17_6tyjg")
 
 [node name="E" type="Button" parent="Cafe"]
-offset_left = 295.0
-offset_top = -57.0
-offset_right = 305.0
+offset_left = 300.0
+offset_top = -49.0
+offset_right = 308.0
 offset_bottom = -41.0
-flat = true
 
 [node name="E" type="Sprite2D" parent="Cafe/E"]
 texture_filter = 1
-position = Vector2(5, 8)
 texture = ExtResource("18_v6f44")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -562,23 +549,5 @@ stream = ExtResource("26_y2ghs")
 
 [node name="btnSound2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_igd7m")
-
-[node name="Level" type="Node2D" parent="."]
-
-[node name="drop_spot" parent="Level" instance=ExtResource("30_amfal")]
-position = Vector2(-41, -73)
-
-[node name="DragableSprite" type="Sprite2D" parent="Level"]
-position = Vector2(175, 26)
-scale = Vector2(0.0893554, 0.0966797)
-texture = ExtResource("30_exuos")
-script = ExtResource("31_avivv")
-
-[node name="Area2D" type="Area2D" parent="Level/DragableSprite"]
-position = Vector2(111.913, 18.101)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/DragableSprite/Area2D"]
-position = Vector2(-93.4878, -21.9799)
-shape = SubResource("RectangleShape2D_koy4j")
 
 [editable path="Simone"]

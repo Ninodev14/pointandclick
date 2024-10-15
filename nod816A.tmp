@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c8r83243ombdv"]
+[gd_scene load_steps=43 format=3 uid="uid://c8r83243ombdv"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_fbswu"]
 [ext_resource type="Texture2D" uid="uid://cgkrqi30h2r4x" path="res://scene1.webp" id="2_8fa3a"]
@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://bwhnvjaqnqf07" path="res://pause.webp" id="21_0x0dy"]
 [ext_resource type="Script" path="res://settings_menu.gd" id="25_genoj"]
 [ext_resource type="AudioStream" uid="uid://bm1u0h8gc0nya" path="res://SonMenu.mp3" id="26_y2ghs"]
-[ext_resource type="PackedScene" uid="uid://bgf35g46fac75" path="res://drop_spot.tscn" id="30_amfal"]
 [ext_resource type="Texture2D" uid="uid://3tw5vmiow8g5" path="res://marteau.png" id="30_exuos"]
 [ext_resource type="Script" path="res://dragable_sprite.gd" id="31_avivv"]
 
@@ -90,6 +89,11 @@ animations = [{
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n4s56"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyj50"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_irjnq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckun2"]
+size = Vector2(82.25, 77.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_koy4j"]
 size = Vector2(529.265, 488.727)
@@ -158,26 +162,26 @@ text = "restart"
 metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = -1031.0
-offset_top = -463.0
-offset_right = -987.0
-offset_bottom = -419.0
+offset_left = -1145.0
+offset_top = -394.0
+offset_right = -1101.0
+offset_bottom = -350.0
 pivot_offset = Vector2(477, 110)
 columns = 4
 
 [node name="FlagButton" type="Button" parent="."]
-offset_left = -950.0
-offset_top = -459.0
-offset_right = -858.0
-offset_bottom = -367.0
+offset_left = -1064.0
+offset_top = -390.0
+offset_right = -972.0
+offset_bottom = -298.0
 pivot_offset = Vector2(396, 106)
 text = "d"
 
 [node name="RevealButton" type="Button" parent="."]
-offset_left = -831.0
-offset_top = -460.0
-offset_right = -739.0
-offset_bottom = -368.0
+offset_left = -945.0
+offset_top = -391.0
+offset_right = -853.0
+offset_bottom = -299.0
 pivot_offset = Vector2(277, 107)
 text = "f"
 
@@ -565,19 +569,27 @@ stream = ExtResource("2_igd7m")
 
 [node name="Level" type="Node2D" parent="."]
 
-[node name="drop_spot" parent="Level" instance=ExtResource("30_amfal")]
-position = Vector2(-41, -73)
+[node name="drop_spot" type="Area2D" parent="Level" groups=["drop_spot_group"]]
 
-[node name="DragableSprite" type="Sprite2D" parent="Level"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Level/drop_spot"]
+position = Vector2(105.125, 122.375)
+scale = Vector2(75.75, 69.25)
+mesh = SubResource("QuadMesh_irjnq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/drop_spot"]
+position = Vector2(105, 124)
+shape = SubResource("RectangleShape2D_ckun2")
+
+[node name="DragableSprite" type="Sprite2D" parent="Level/drop_spot"]
 position = Vector2(175, 26)
 scale = Vector2(0.0893554, 0.0966797)
 texture = ExtResource("30_exuos")
 script = ExtResource("31_avivv")
 
-[node name="Area2D" type="Area2D" parent="Level/DragableSprite"]
+[node name="Area2D" type="Area2D" parent="Level/drop_spot/DragableSprite"]
 position = Vector2(111.913, 18.101)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/DragableSprite/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/drop_spot/DragableSprite/Area2D"]
 position = Vector2(-93.4878, -21.9799)
 shape = SubResource("RectangleShape2D_koy4j")
 

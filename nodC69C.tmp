@@ -1,13 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://c8r83243ombdv"]
+[gd_scene load_steps=32 format=3 uid="uid://c8r83243ombdv"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_fbswu"]
+[ext_resource type="PackedScene" uid="uid://dl7ke3lprvgax" path="res://btn.tscn" id="1_gk3kj"]
 [ext_resource type="Texture2D" uid="uid://cgkrqi30h2r4x" path="res://scene1.webp" id="2_8fa3a"]
-[ext_resource type="AudioStream" uid="uid://bkcaay5bify87" path="res://btnSoud.mp3" id="2_igd7m"]
 [ext_resource type="Texture2D" uid="uid://xoig2kqvqjg" path="res://poeme.png" id="3_dkltr"]
-[ext_resource type="Script" path="res://btn.gd" id="4_lp3a4"]
 [ext_resource type="Script" path="res://manageur.gd" id="4_xmjoi"]
 [ext_resource type="Texture2D" uid="uid://c5ajdyo4yrk5c" path="res://intense-fiery-explosion-with-billowing-smoke-on-a-transparent-background-png.webp" id="5_lypw1"]
-[ext_resource type="Texture2D" uid="uid://sbv1ijdvr4c6" path="res://Sprite-0001-Sheet.png" id="5_sq5rd"]
 [ext_resource type="Texture2D" uid="uid://be32uq4gkrbpg" path="res://Loose6.png" id="5_vavaq"]
 [ext_resource type="Texture2D" uid="uid://ccps1nhdkffbx" path="res://loose2.jpg" id="5_vjyno"]
 [ext_resource type="Texture2D" uid="uid://dn20vi87q6kw" path="res://Loose4.jpg" id="6_ia2iw"]
@@ -19,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://n6a6e5sbfysd" path="res://c.webp" id="15_8j55q"]
 [ext_resource type="Texture2D" uid="uid://b03p50meong3o" path="res://A.webp" id="16_dl7jb"]
 [ext_resource type="Texture2D" uid="uid://d6suqiwblgtc" path="res://F.webp" id="17_6tyjg"]
-[ext_resource type="Script" path="res://cafe.gd" id="17_uhe3k"]
 [ext_resource type="Texture2D" uid="uid://cw34ddes2ia2t" path="res://E.webp" id="18_v6f44"]
 [ext_resource type="Script" path="res://ui.gd" id="19_74cbs"]
 [ext_resource type="Texture2D" uid="uid://j4jekysgi5qf" path="res://help.webp" id="19_ew04u"]
@@ -29,36 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://bwhnvjaqnqf07" path="res://pause.webp" id="21_0x0dy"]
 [ext_resource type="Script" path="res://settings_menu.gd" id="25_genoj"]
 [ext_resource type="AudioStream" uid="uid://bm1u0h8gc0nya" path="res://SonMenu.mp3" id="26_y2ghs"]
-[ext_resource type="PackedScene" uid="uid://bgf35g46fac75" path="res://drop_spot.tscn" id="30_amfal"]
-[ext_resource type="Texture2D" uid="uid://3tw5vmiow8g5" path="res://marteau.png" id="30_exuos"]
-[ext_resource type="Script" path="res://dragable_sprite.gd" id="31_avivv"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p642d"]
-atlas = ExtResource("5_sq5rd")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b26bk"]
-atlas = ExtResource("5_sq5rd")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ck3xl"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p642d")
-}],
-"loop": true,
-"name": &"Unpressed",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b26bk")
-}],
-"loop": true,
-"name": &"pressed",
-"speed": 5.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8xilw"]
 atlas = ExtResource("8_7ia42")
@@ -91,9 +58,6 @@ animations = [{
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyj50"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_koy4j"]
-size = Vector2(529.265, 488.727)
-
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
 script = ExtResource("1_fbswu")
@@ -110,26 +74,8 @@ position = Vector2(219, -84)
 scale = Vector2(0.0962185, 0.0962185)
 texture = ExtResource("3_dkltr")
 
-[node name="btn_loose1" type="Area2D" parent="."]
+[node name="btn_loose1" parent="." instance=ExtResource("1_gk3kj")]
 position = Vector2(0, 115)
-script = ExtResource("4_lp3a4")
-
-[node name="Button" type="Button" parent="btn_loose1"]
-offset_left = -15.0
-offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 15.0
-flat = true
-
-[node name="btnAnnim" type="AnimatedSprite2D" parent="btn_loose1/Button"]
-texture_filter = 1
-position = Vector2(15, 15)
-scale = Vector2(0.9375, 0.9375)
-sprite_frames = SubResource("SpriteFrames_ck3xl")
-animation = &"Unpressed"
-
-[node name="btnSound" type="AudioStreamPlayer2D" parent="btn_loose1"]
-stream = ExtResource("2_igd7m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.68, 1.68)
@@ -158,26 +104,26 @@ text = "restart"
 metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = -1031.0
-offset_top = -463.0
-offset_right = -987.0
-offset_bottom = -419.0
+offset_left = -1145.0
+offset_top = -394.0
+offset_right = -1101.0
+offset_bottom = -350.0
 pivot_offset = Vector2(477, 110)
 columns = 4
 
 [node name="FlagButton" type="Button" parent="."]
-offset_left = -950.0
-offset_top = -459.0
-offset_right = -858.0
-offset_bottom = -367.0
+offset_left = -1064.0
+offset_top = -390.0
+offset_right = -972.0
+offset_bottom = -298.0
 pivot_offset = Vector2(396, 106)
 text = "d"
 
 [node name="RevealButton" type="Button" parent="."]
-offset_left = -831.0
-offset_top = -460.0
-offset_right = -739.0
-offset_bottom = -368.0
+offset_left = -945.0
+offset_top = -391.0
+offset_right = -853.0
+offset_bottom = -299.0
 pivot_offset = Vector2(277, 107)
 text = "f"
 
@@ -308,58 +254,26 @@ offset_right = -141.0
 offset_bottom = 119.0
 
 [node name="Cafe" type="Area2D" parent="."]
-script = ExtResource("17_uhe3k")
 
-[node name="C" type="Button" parent="Cafe"]
-offset_left = 256.0
-offset_top = -57.0
-offset_right = 268.0
-offset_bottom = -41.0
-flat = true
-
-[node name="C" type="Sprite2D" parent="Cafe/C"]
+[node name="C" type="Sprite2D" parent="Cafe"]
 texture_filter = 1
-position = Vector2(6, 8)
+position = Vector2(263.5, -49)
 texture = ExtResource("15_8j55q")
 
-[node name="A" type="Button" parent="Cafe"]
-offset_left = 271.0
-offset_top = -57.0
-offset_right = 281.0
-offset_bottom = -41.0
-flat = true
-
-[node name="A" type="Sprite2D" parent="Cafe/A"]
+[node name="A" type="Sprite2D" parent="Cafe"]
 texture_filter = 1
-position = Vector2(5, 8)
+position = Vector2(276.5, -49)
 texture = ExtResource("16_dl7jb")
 
-[node name="F" type="Button" parent="Cafe"]
-offset_left = 283.0
-offset_top = -57.0
-offset_right = 293.0
-offset_bottom = -41.0
-flat = true
-
-[node name="F" type="Sprite2D" parent="Cafe/F"]
+[node name="F" type="Sprite2D" parent="Cafe"]
 texture_filter = 1
-position = Vector2(5, 8)
+position = Vector2(288.5, -49)
 texture = ExtResource("17_6tyjg")
 
-[node name="E" type="Button" parent="Cafe"]
-offset_left = 295.0
-offset_top = -57.0
-offset_right = 305.0
-offset_bottom = -41.0
-flat = true
-
-[node name="E" type="Sprite2D" parent="Cafe/E"]
+[node name="E" type="Sprite2D" parent="Cafe"]
 texture_filter = 1
-position = Vector2(5, 8)
+position = Vector2(300, -49)
 texture = ExtResource("18_v6f44")
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-404, 39)
 
 [node name="NoteContener" type="Area2D" parent="."]
 visible = false
@@ -428,13 +342,25 @@ position = Vector2(15, 15)
 texture = ExtResource("20_1bomj")
 
 [node name="SettingsMenu" type="ColorRect" parent="."]
-visible = false
 offset_left = -343.0
 offset_top = -193.0
 offset_right = 343.0
 offset_bottom = 193.0
 color = Color(0, 0, 0, 0.658824)
 script = ExtResource("25_genoj")
+
+[node name="Sauvegarder" type="Button" parent="SettingsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 54.0
+offset_top = 147.0
+offset_right = 180.0
+offset_bottom = 178.0
+text = "Sauvegarder"
 
 [node name="Retour" type="Button" parent="SettingsMenu"]
 layout_mode = 1
@@ -478,36 +404,6 @@ offset_top = 182.0
 offset_right = 82.0
 offset_bottom = 205.0
 text = "Sfx"
-
-[node name="ReadDocTimerCheck" type="CheckBox" parent="SettingsMenu"]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 295.0
-offset_right = 69.0
-offset_bottom = 319.0
-
-[node name="ReadDocTimerLabel" type="Label" parent="SettingsMenu"]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 293.0
-offset_right = 114.0
-offset_bottom = 316.0
-text = "Temps qui se stop quand on lit un document "
-
-[node name="ReadNoteTimerCheck" type="CheckBox" parent="SettingsMenu"]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 325.0
-offset_right = 69.0
-offset_bottom = 349.0
-
-[node name="ReadNoteTimerLabel" type="Label" parent="SettingsMenu"]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 323.0
-offset_right = 423.0
-offset_bottom = 346.0
-text = "Temps qui se stop quand on prend des notes"
 
 [node name="PauseMenu" type="ColorRect" parent="."]
 visible = false
@@ -559,26 +455,5 @@ text = "Reprendre"
 [node name="SonMenu" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-404, 39)
 stream = ExtResource("26_y2ghs")
-
-[node name="btnSound2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_igd7m")
-
-[node name="Level" type="Node2D" parent="."]
-
-[node name="drop_spot" parent="Level" instance=ExtResource("30_amfal")]
-position = Vector2(-41, -73)
-
-[node name="DragableSprite" type="Sprite2D" parent="Level"]
-position = Vector2(175, 26)
-scale = Vector2(0.0893554, 0.0966797)
-texture = ExtResource("30_exuos")
-script = ExtResource("31_avivv")
-
-[node name="Area2D" type="Area2D" parent="Level/DragableSprite"]
-position = Vector2(111.913, 18.101)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/DragableSprite/Area2D"]
-position = Vector2(-93.4878, -21.9799)
-shape = SubResource("RectangleShape2D_koy4j")
 
 [editable path="Simone"]
