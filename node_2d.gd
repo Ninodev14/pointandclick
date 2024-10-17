@@ -21,19 +21,48 @@ var current_cell_position: Vector2i
 @onready var settings_button: Button = $PauseMenu/Parametres
 @onready var settings_menu = $SettingsMenu
 @onready var back_button: Button = $SettingsMenu/Retour
-@onready var pause_on_notes_checkbox: CheckBox = $SettingsMenu/ReadNoteTimerCheck # Référence à la checkbox
+@onready var pause_on_notes_checkbox: CheckBox = $SettingsMenu/ReadNoteTimerCheck 
 
 @onready var music_player: AudioStreamPlayer2D = $SonMenu
 @onready var sfx_players: Array = [$btn_loose1/btnSound, $btnSound2]
 
+@onready var ecranEtain: Sprite2D = $ecranEtain 
+@onready var black_filter: ColorRect = $BlackFilter 
+@onready var ecran_ville = $EcranVille
+@onready var ecran_td = $EcranTd
+@onready var ecran_foret = $EcranForet
+@onready var ecran_glacier = $EcranGlacier
+@onready var ecran_people = $EcranPeople
+@onready var ecran_terre = $EcranTerre
+@onready var menueEnd = $MenueBadEnd
+@onready var noClick = $NoClick
+
+# Variable pour suivre l'état des animations
+var animations_finished = {
+	"EcranVille": false,
+	"EcranTd": false,
+	"EcranForet": false,
+	"EcranGlacier": false,
+	"EcranPeople": false,
+	"EcranTerre": false
+}
 var is_paused: bool = false
 var remaining_time: float = 0
+var sprite_shown: bool = false
 
 func _ready() -> void:
+	
+	ecran_ville.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranVille"))
+	ecran_td.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranTd"))
+	ecran_foret.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranForet"))
+	ecran_glacier.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranGlacier"))
+	ecran_people.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranPeople"))
+	ecran_terre.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranTerre"))
+	menueEnd.visible = false
 	music_player.play()
 	create_grid()
 	add_child(timer)
-	timer.wait_time = 60
+	timer.wait_time = 300
 	timer.one_shot = true
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 	timer.start()
@@ -58,10 +87,10 @@ func _ready() -> void:
 	resume_button.connect("pressed", Callable(self, "_on_resume_button_pressed"))
 	settings_button.connect("pressed", Callable(self, "_on_settings_button_pressed"))
 	back_button.connect("pressed", Callable(self, "_on_back_button_pressed"))
-
+	noClick.hide()
 	pause_menu.hide()
 	settings_menu.hide()
-
+	reset_button.hide()
 	update_audio_volume()
 
 #------------------------------- DEMINEUR ------------------------------------
@@ -73,7 +102,7 @@ func create_grid():
 		var row = []
 		for y in range(grid_size):
 			var button = Button.new()
-			button.custom_minimum_size = Vector2(32, 32)  # Taille des boutons
+			button.custom_minimum_size = Vector2(8, 8)  # Taille des boutons
 			button.connect("pressed", Callable(self, "_on_cell_pressed").bind(Vector2i(x, y)))
 			grid.add_child(button)
 			row.append(button)
@@ -154,12 +183,44 @@ func reveal_bombs():
 func _process(delta: float) -> void:
 	if not is_paused and not timer.is_stopped():
 		var time_left = int(timer.time_left)
-		label.text = str(time_left) + " s restantes"
+		label.text = str(time_left) + " s"
+
+		if time_left == 270 and not sprite_shown:
+			show_sprite_and_filter()
+
+	if Input.is_action_just_pressed("menu"):
+		if not is_paused:
+			_on_pause_button_pressed()
+		else:
+			_on_resume_button_pressed()
 
 func _on_timer_timeout() -> void:
+	noClick.show()
 	_save_element_data()
-	reset_button.disabled = false
+	ecran_ville.play("BadEnd")
+	ecran_td.play("BadEnd")
+	ecran_foret.play("BadEnd")
+	ecran_glacier.play("BadEnd")
+	ecran_people.play("BadEnd")
+	ecran_terre.play("BadEnd")
 
+
+func _on_animation_finished(animation_name: String):
+	animations_finished[animation_name] = true
+	_check_all_animations_finished()
+
+func _check_all_animations_finished() -> void:
+	var all_finished = true
+	for finished in animations_finished.values():
+		if not finished:
+			all_finished = false
+			break
+
+	if all_finished:
+		menueEnd.visible = true
+		reset_button.show()
+		print("Toutes les animations sont terminées, Area2D est maintenant visible.")
+		
 func _save_element_data() -> void:
 	Manageur.saved_text = element_to_keep.text
 
@@ -238,3 +299,18 @@ func _on_music_slider_changed(value: float) -> void:
 func _on_sfx_slider_changed(value: float) -> void:
 	Manageur.sfx_volume = value / 100.0
 	update_audio_volume()
+
+#------------------------------- AFFICHAGE DU SPRITE ET FILTRE NOIR -------------------------------
+
+
+func show_sprite_and_filter():
+	sprite_shown = true
+	ecranEtain.visible = true 
+	black_filter.visible = true 
+	black_filter.modulate = Color(0, 0, 0, 1)
+
+	# Attendre que le timer de 2 secondes expire
+	await get_tree().create_timer(2.0).timeout
+	
+	black_filter.visible = false  # Cache le filtre noir
+	ecranEtain.visible = false  # Cache le sprite après le délai

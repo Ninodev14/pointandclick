@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var area_to_show = $"../Area2D"
+@onready var area_to_show = $"../Marteau"
 var button_sequence: Array = []
 var correct_sequence: Array = ["C", "F", "A"]
 

@@ -51,7 +51,7 @@ func _handle_color_click(color_index: int) -> void:
 	# Change the color temporarily
 	colors[color_index].modulate = Color(2, 2, 2)  # Make it brighter
 	await get_tree().create_timer(0.2).timeout
-	colors[color_index].modulate = original_colors[color_index]  # Revert to original color
+	colors[color_index].modulate = original_colors[color_index]
 	
 	if current_color_index < current_round and color_index == sequence[current_color_index]:
 		player_input.append(color_index)
@@ -64,6 +64,18 @@ func _handle_color_click(color_index: int) -> void:
 			else:
 				var win_area = $"../PoemeCafe"
 				win_area.visible = true
+
+				var digicode = $"../Digicode"
+				if digicode:
+					digicode.visible = false
+			
+				var btn_gamma = $"../btnGamma"
+				if btn_gamma:
+					btn_gamma.visible = false 
+			
+				var some_other_node = $"."
+				if some_other_node:
+					some_other_node.visible = false
 		else:
 			pass
 	else:
