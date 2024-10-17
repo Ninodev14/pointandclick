@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var levier = $Levier 
 @onready var animation_player = $Levier/Levier
-@onready var demnieur = $"../GridContainer"
+@onready var demnieur = $"../DemineurActiveur"
 @onready var coffreFort = $"../coffreFort"
 @onready var screen =  $"../screen"
 @onready var cable =  $"../Cable"

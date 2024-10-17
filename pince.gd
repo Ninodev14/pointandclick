@@ -1,9 +1,13 @@
 extends Area2D
 
+var cannardAnnim = 0
 var dragging = false
 var offset = Vector2.ZERO
 var last_area = null 
 var initial_position = Vector2.ZERO 
+@onready var CannardAnim = $"../MainScene"
+@onready var MenueCannard = $"../MenueCanard" 
+@onready var resetButton = $"../ResetButton"
 
 func _ready() -> void:
 	initial_position = position
@@ -35,14 +39,32 @@ func _on_area_exited(area: Area2D) -> void:
 func _detect_color(area: Area2D) -> void:
 	if area.is_in_group("Blanc"):
 		print("La pince a touché le blanc!")
+		hide()
 	elif area.is_in_group("Noir"):
 		print("La pince a touché le noir!")
+		hide()
 	elif area.is_in_group("Cyan"):
-		print("La pince a touché le cyan!")
+		cannardAnnim = 1
+		_play_cyan_animation()
+		hide()
 	elif area.is_in_group("Magenta"):
 		print("La pince a touché le magenta!")
+		hide()
 	else:
 		print("Couleur inconnue touchée.")
+
+func _play_cyan_animation() -> void:
+	if CannardAnim.is_playing():
+		print("Animation en cours, impossible de lancer une nouvelle animation.")
+		return
+	CannardAnim.play("Canard")
+	CannardAnim.connect("animation_finished", Callable(self, "_on_animation_finished"))  
+
+func _on_animation_finished() -> void:  
+	if cannardAnnim == 1:
+		resetButton.show()
+		MenueCannard.show()
+		CannardAnim.disconnect("animation_finished", Callable(self, "_on_animation_finished")) 
 
 func _reset_position() -> void:
 	print("Aucune zone détectée. La pince revient à sa position initiale.")

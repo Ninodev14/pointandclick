@@ -62,9 +62,6 @@ func _handle_color_click(color_index: int) -> void:
 				await get_tree().create_timer(0.2).timeout
 				start_new_round()
 			else:
-				var win_area = $"../PoemeCafe"
-				win_area.visible = true
-
 				var digicode = $"../Digicode"
 				if digicode:
 					digicode.visible = false
@@ -72,10 +69,24 @@ func _handle_color_click(color_index: int) -> void:
 				var btn_gamma = $"../btnGamma"
 				if btn_gamma:
 					btn_gamma.visible = false 
-			
-				var some_other_node = $"."
-				if some_other_node:
-					some_other_node.visible = false
+				
+				var simon = $"."
+				if simon:
+					simon.visible = false 
+				# Jouer l'animation Poem
+				var animation_player = $"../Fax/Fax"
+				if animation_player:  # Vérifier si l'animation player existe
+					animation_player.play("Poem")  # Lancez l'animation Poem
+				
+					# Attendre que l'animation se termine
+					while animation_player.is_playing():
+						await get_tree().create_timer(0.1).timeout
+				
+					# Afficher le bouton après l'animation
+					var poem_btn = $"../Fax/PoemBtn"
+					if poem_btn:
+						poem_btn.visible = true
+
 		else:
 			pass
 	else:

@@ -13,8 +13,8 @@ var current_cell_position: Vector2i
 @onready var element_to_keep = $NoteContener/Note
 @onready var label = $TimerLabel
 @onready var reset_button = $ResetButton
-@onready var reveal_button = $RevealButton
-@onready var flag_button = $FlagButton
+@onready var reveal_button = $Demineur/RevealButton
+@onready var flag_button = $Demineur/FlagButton
 @onready var pause_button: Button = $UI/Pause
 @onready var pause_menu = $PauseMenu
 @onready var resume_button: Button = $PauseMenu/Reprendre
@@ -51,7 +51,7 @@ var remaining_time: float = 0
 var sprite_shown: bool = false
 
 func _ready() -> void:
-	
+	# Les boutons conservent leur position définie dans l'éditeur
 	ecran_ville.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranVille"))
 	ecran_td.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranTd"))
 	ecran_foret.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranForet"))
@@ -75,9 +75,6 @@ func _ready() -> void:
 	place_bombs() 
 	reveal_initial_cells()
 
-	reveal_button.text = "Révéler"
-	flag_button.text = "Drapeau"
-
 	reveal_button.visible = false
 	flag_button.visible = false
 
@@ -96,13 +93,13 @@ func _ready() -> void:
 #------------------------------- DEMINEUR ------------------------------------
 
 func create_grid():
-	var grid = $GridContainer
+	var grid = $Demineur/Demineur
 	grid.columns = grid_size  
 	for x in range(grid_size):
 		var row = []
 		for y in range(grid_size):
 			var button = Button.new()
-			button.custom_minimum_size = Vector2(8, 8)  # Taille des boutons
+			button.custom_minimum_size = Vector2(33, 33)  # Taille des boutons
 			button.connect("pressed", Callable(self, "_on_cell_pressed").bind(Vector2i(x, y)))
 			grid.add_child(button)
 			row.append(button)
@@ -131,11 +128,6 @@ func reveal_initial_cells():
 
 func _on_cell_pressed(position: Vector2i):
 	current_cell_position = position
-	var button_size = Vector2(32, 32)
-	var clicked_button = grid_cells[position.x][position.y]
-	var button_position = clicked_button.get_global_transform().origin
-	reveal_button.position = button_position + Vector2(0, button_size.y + 10)
-	flag_button.position = button_position + Vector2(button_size.x + 10, button_size.y + 10)
 	reveal_button.visible = true
 	flag_button.visible = true
 
@@ -204,7 +196,6 @@ func _on_timer_timeout() -> void:
 	ecran_people.play("BadEnd")
 	ecran_terre.play("BadEnd")
 
-
 func _on_animation_finished(animation_name: String):
 	animations_finished[animation_name] = true
 	_check_all_animations_finished()
@@ -219,7 +210,6 @@ func _check_all_animations_finished() -> void:
 	if all_finished:
 		menueEnd.visible = true
 		reset_button.show()
-		print("Toutes les animations sont terminées, Area2D est maintenant visible.")
 		
 func _save_element_data() -> void:
 	Manageur.saved_text = element_to_keep.text
@@ -301,7 +291,6 @@ func _on_sfx_slider_changed(value: float) -> void:
 	update_audio_volume()
 
 #------------------------------- AFFICHAGE DU SPRITE ET FILTRE NOIR -------------------------------
-
 
 func show_sprite_and_filter():
 	sprite_shown = true

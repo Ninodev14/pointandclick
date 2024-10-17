@@ -1,4 +1,4 @@
-[gd_scene load_steps=360 format=3 uid="uid://c8r83243ombdv"]
+[gd_scene load_steps=408 format=3 uid="uid://c8r83243ombdv"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_fbswu"]
 [ext_resource type="Texture2D" uid="uid://by7x8w8l1rcyp" path="res://BAD_ENDING/ECRAN_VILLE/ecran_ville1.png" id="2_ahcl0"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://bkcaay5bify87" path="res://btnSoud.mp3" id="2_igd7m"]
 [ext_resource type="Texture2D" uid="uid://bjai2ordi87yx" path="res://main_scene1.png" id="2_oonb3"]
 [ext_resource type="Texture2D" uid="uid://qgi1s7007alk" path="res://BAD_ENDING/ECRAN_FORET/ecran_foret2.png" id="3_aie03"]
-[ext_resource type="Texture2D" uid="uid://xoig2kqvqjg" path="res://poeme.png" id="3_dkltr"]
 [ext_resource type="Texture2D" uid="uid://o54ngc8gvo74" path="res://BAD_ENDING/ECRAN_VILLE/ecran_ville2.png" id="3_vxgsk"]
 [ext_resource type="Texture2D" uid="uid://bsvcm4yjnplti" path="res://BAD_ENDING/ECRAN_FORET/ecran_foret3.png" id="4_8pjbk"]
 [ext_resource type="Script" path="res://btn.gd" id="4_lp3a4"]
@@ -199,20 +198,29 @@
 [ext_resource type="Texture2D" uid="uid://chbxki2gfrjq0" path="res://Paper/S2/Spincomp18.png" id="97_8sqaw"]
 [ext_resource type="Texture2D" uid="uid://dr424yf3qu0g" path="res://Paper/S2/Spincomp19.png" id="98_1f6mo"]
 [ext_resource type="Texture2D" uid="uid://vl44kpolwcmy" path="res://Paper/S3/Spincomp21.png" id="99_cpp7u"]
+[ext_resource type="Texture2D" uid="uid://00fuyt43rhn5" path="res://glitch.png" id="99_ic2qf"]
+[ext_resource type="Texture2D" uid="uid://dyk3fbds2yba6" path="res://fin coin coin/COIN COIN1.png" id="99_qgkvs"]
 [ext_resource type="Texture2D" uid="uid://c3w0hdw2u6x8r" path="res://earthsplosion2/earthboom12.png" id="99_yrfdt"]
 [ext_resource type="Texture2D" uid="uid://bmayjl3hi5n60" path="res://Paper/S3/Spincomp22.png" id="100_3d286"]
+[ext_resource type="Texture2D" uid="uid://dbtug708sublb" path="res://fin coin coin/COIN COIN2.png" id="100_5a7qk"]
 [ext_resource type="Texture2D" uid="uid://cbdm0ckliy45j" path="res://earthsplosion2/earthboom13.png" id="100_6xuvd"]
+[ext_resource type="Texture2D" uid="uid://dy5vvm42itd23" path="res://fin coin coin/COIN COIN3.png" id="101_4kpg0"]
 [ext_resource type="Texture2D" uid="uid://dto587jwihhq3" path="res://earthsplosion2/earthboom14.png" id="101_cerw2"]
 [ext_resource type="Texture2D" uid="uid://dwssmc0w0c7wy" path="res://Paper/S3/Spincomp23.png" id="101_vntmq"]
+[ext_resource type="Texture2D" uid="uid://e5n6dp0mc5ft" path="res://fin coin coin/COIN COIN4.png" id="102_6ldge"]
 [ext_resource type="Texture2D" uid="uid://cfi7xclyoarsr" path="res://Paper/S3/Spincomp24.png" id="102_o1ln5"]
 [ext_resource type="Texture2D" uid="uid://dkvnt1y8iuhn8" path="res://earthsplosion2/earthboom15.png" id="102_wyqjk"]
+[ext_resource type="Texture2D" uid="uid://dg85bqjl5rqid" path="res://fin coin coin/COIN COIN5.png" id="103_bs0gx"]
 [ext_resource type="Texture2D" uid="uid://k1cwas2v8ivv" path="res://Paper/S3/Spincomp25.png" id="103_la4mc"]
 [ext_resource type="Texture2D" uid="uid://cm7hpfe0xws4" path="res://earthsplosion2/earthboom16.png" id="103_mov38"]
 [ext_resource type="Texture2D" uid="uid://iq1lppvaheqm" path="res://Paper/S3/fix3.png" id="104_2ikkj"]
 [ext_resource type="Texture2D" uid="uid://m486m37t0u56" path="res://earthsplosion2/earthboom17.png" id="104_hh16h"]
+[ext_resource type="Texture2D" uid="uid://owcdyxbmbfh6" path="res://fin coin coin/COIN COIN6.png" id="104_v6pkx"]
 [ext_resource type="Texture2D" uid="uid://dpdmdcc06jw01" path="res://earthsplosion2/earthboom18.png" id="105_0jcog"]
+[ext_resource type="Texture2D" uid="uid://b013q14uran1c" path="res://fin coin coin/COIN COIN7.png" id="105_fm075"]
 [ext_resource type="Texture2D" uid="uid://di85jfwqi3e6f" path="res://Paper/S3/Spincomp3.png" id="105_u0hnd"]
 [ext_resource type="Texture2D" uid="uid://d1xxw048ap8fy" path="res://Paper/S3/Spincomp4.png" id="106_7o1km"]
+[ext_resource type="Texture2D" uid="uid://bm50ka7oumqlp" path="res://fin coin coin/COIN COIN8.png" id="106_25r2q"]
 [ext_resource type="Texture2D" uid="uid://d14tu5bqmusq1" path="res://earthsplosion2/earthboom19.png" id="106_58qcl"]
 [ext_resource type="Texture2D" uid="uid://bpsl2dmxi1qu4" path="res://earthsplosion2/earthboom20.png" id="107_ji4vc"]
 [ext_resource type="Texture2D" uid="uid://bbqd7xsntn5s7" path="res://Paper/S3/Spincomp5.png" id="107_q8gq2"]
@@ -323,6 +331,9 @@
 [ext_resource type="Texture2D" uid="uid://cgdvu7ofp8hkk" path="res://earthsplosion2/earthboom86.png" id="173_c3vk4"]
 [ext_resource type="Texture2D" uid="uid://dw6hs1yyj5eh0" path="res://earthsplosion2/earthboom87.png" id="174_a8ity"]
 [ext_resource type="Texture2D" uid="uid://b8fvh8rcd38q4" path="res://earthsplosion2/earthboom88.png" id="175_ifggg"]
+[ext_resource type="Script" path="res://demineur_activeur.gd" id="185_xofy3"]
+[ext_resource type="Texture2D" uid="uid://o8bri5nn5ubm" path="res://ZVESRVSR.webp" id="186_g2nb6"]
+[ext_resource type="Texture2D" uid="uid://bjafgnie1yxvb" path="res://Demineur/btn/Mine25.png" id="194_bflrk"]
 [ext_resource type="Script" path="res://poster.gd" id="194_qo4pb"]
 [ext_resource type="Texture2D" uid="uid://pbp4ei5ysesh" path="res://poster/Sprite-0003.png" id="195_ck6ei"]
 [ext_resource type="Texture2D" uid="uid://bnmxp58xsq2ay" path="res://poster/Sprite-0011.png" id="196_u48wa"]
@@ -333,6 +344,41 @@
 [ext_resource type="Texture2D" uid="uid://ch0jlm1yk0u6h" path="res://poster/Sprite-0006.png" id="201_f7a3m"]
 [ext_resource type="Texture2D" uid="uid://drokwbmbxxu6h" path="res://poster/Sprite-0005.png" id="202_4m17j"]
 [ext_resource type="Texture2D" uid="uid://ctsy622yg7r0e" path="res://poster/Sprite-0004.png" id="203_vb87y"]
+[ext_resource type="Script" path="res://fax.gd" id="325_6jvb1"]
+[ext_resource type="Texture2D" uid="uid://3b0lf5e3qqw8" path="res://Paper/paperend/Spinend1.png" id="325_7edkk"]
+[ext_resource type="Texture2D" uid="uid://bi0fwp4udb432" path="res://Paper/paperend/Spinend2.png" id="326_7bgg5"]
+[ext_resource type="Texture2D" uid="uid://b8hugmow4fbl3" path="res://fax/fax1.png" id="326_ih1lp"]
+[ext_resource type="Texture2D" uid="uid://dc5udj85451m2" path="res://Paper/paperend/Spinend3.png" id="327_pi5gd"]
+[ext_resource type="Texture2D" uid="uid://cs0fyxfecwf4i" path="res://fax/fax2.png" id="327_w408q"]
+[ext_resource type="Texture2D" uid="uid://kwv2c04f8vuc" path="res://fax/fax3.png" id="328_bv2xe"]
+[ext_resource type="Texture2D" uid="uid://mb0f4ocefadk" path="res://Paper/paperend/Spinend4.png" id="328_yp1rf"]
+[ext_resource type="Texture2D" uid="uid://ciww2x5vwgo5m" path="res://fax/fax4.png" id="329_g0kxd"]
+[ext_resource type="Texture2D" uid="uid://bvxtj02rv32x8" path="res://Paper/paperend/Spinend5.png" id="329_tjgb3"]
+[ext_resource type="Texture2D" uid="uid://dk7bn025egawh" path="res://fax/fax5.png" id="330_hc18b"]
+[ext_resource type="Texture2D" uid="uid://dsf3ebyfmhhdp" path="res://Paper/paperend/Spinend6.png" id="330_i45lp"]
+[ext_resource type="Texture2D" uid="uid://bea73vt3fpllb" path="res://Paper/paperend/Spinend7.png" id="331_4c6ul"]
+[ext_resource type="Texture2D" uid="uid://b8o5wnbl80hp7" path="res://fax/fax6.png" id="331_e2w0p"]
+[ext_resource type="Texture2D" uid="uid://cfukusigrbgrp" path="res://fax/fax7.png" id="332_gkeey"]
+[ext_resource type="Texture2D" uid="uid://dtavmm8an2477" path="res://Paper/paperend/Spinend8.png" id="332_t04sg"]
+[ext_resource type="Texture2D" uid="uid://epljxtjceafb" path="res://fax/fax8.png" id="333_n1bnb"]
+[ext_resource type="Texture2D" uid="uid://75hsctxilyjn" path="res://Paper/paperend/Spinend9.png" id="333_vuok0"]
+[ext_resource type="Texture2D" uid="uid://dysnknkyg6jum" path="res://fax/fax9.png" id="334_qnb0a"]
+[ext_resource type="Texture2D" uid="uid://duifnirswavty" path="res://fax/fax10.png" id="335_i1wps"]
+[ext_resource type="Texture2D" uid="uid://puedynh3aolm" path="res://fax/fax11.png" id="336_rh2ye"]
+[ext_resource type="Texture2D" uid="uid://c1vpyxbk0wljb" path="res://fax/fax12.png" id="337_wreyk"]
+[ext_resource type="Texture2D" uid="uid://db73e4f5fbwu6" path="res://fax/fax13.png" id="338_07pgv"]
+[ext_resource type="Texture2D" uid="uid://dicv67dsihyk3" path="res://fax/fax14.png" id="339_4exd7"]
+[ext_resource type="Texture2D" uid="uid://dgpc3kht2pla" path="res://fax/fax15.png" id="340_rthed"]
+[ext_resource type="Texture2D" uid="uid://jn13hyv6fjeg" path="res://fax/fax16.png" id="341_kckna"]
+[ext_resource type="Texture2D" uid="uid://qgglf7abdfmb" path="res://fax/fax17.png" id="342_ti1i6"]
+[ext_resource type="Texture2D" uid="uid://h00e6w0qfda8" path="res://fax/fax18.png" id="343_5ht1h"]
+[ext_resource type="Texture2D" uid="uid://7h12s6ko4oun" path="res://fax/fax19.png" id="344_lqj1k"]
+[ext_resource type="Texture2D" uid="uid://cx7cg2htusomt" path="res://fax/fax20.png" id="345_wbt0w"]
+[ext_resource type="Texture2D" uid="uid://0sqxtnmcq7su" path="res://fax/fax21.png" id="346_3h8ra"]
+[ext_resource type="Texture2D" uid="uid://drs08x6gi5p04" path="res://fax/poem1.png" id="349_gl0ds"]
+[ext_resource type="Texture2D" uid="uid://cxj0oxecep6lm" path="res://Demineur/Interface/minezoom1.png" id="366_4dcxm"]
+[ext_resource type="Texture2D" uid="uid://c1oetso6dq8yb" path="res://Demineur/Interface/minezoom3.png" id="367_2kjwi"]
+[ext_resource type="Texture2D" uid="uid://b2imvnanqvcpk" path="res://Demineur/Interface/minezoom2.png" id="368_83osm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3bobo"]
 animations = [{
@@ -847,6 +893,47 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_qdtvb"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("99_ic2qf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_ic2qf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_qgkvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_5a7qk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_4kpg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_6ldge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_bs0gx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_v6pkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_fm075")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_25r2q")
+}],
+"loop": false,
+"name": &"Canard",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("99_ic2qf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_ic2qf")
+}, {
 "duration": 0.4,
 "texture": ExtResource("99_yrfdt")
 }, {
@@ -1786,6 +1873,128 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_oa85a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("325_7edkk")
+}],
+"loop": false,
+"name": &"defaut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("325_7edkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("326_7bgg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("327_pi5gd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("328_yp1rf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("329_tjgb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("330_i45lp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("331_4c6ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("332_t04sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("333_vuok0")
+}],
+"loop": false,
+"name": &"end",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_848g5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("326_ih1lp")
+}],
+"loop": true,
+"name": &"Defaut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.7,
+"texture": ExtResource("326_ih1lp")
+}, {
+"duration": 0.7,
+"texture": ExtResource("327_w408q")
+}, {
+"duration": 0.7,
+"texture": ExtResource("328_bv2xe")
+}, {
+"duration": 0.7,
+"texture": ExtResource("329_g0kxd")
+}, {
+"duration": 0.7,
+"texture": ExtResource("330_hc18b")
+}, {
+"duration": 0.7,
+"texture": ExtResource("331_e2w0p")
+}, {
+"duration": 0.7,
+"texture": ExtResource("332_gkeey")
+}, {
+"duration": 0.7,
+"texture": ExtResource("333_n1bnb")
+}, {
+"duration": 0.7,
+"texture": ExtResource("334_qnb0a")
+}, {
+"duration": 0.7,
+"texture": ExtResource("335_i1wps")
+}, {
+"duration": 0.7,
+"texture": ExtResource("336_rh2ye")
+}, {
+"duration": 0.7,
+"texture": ExtResource("337_wreyk")
+}, {
+"duration": 0.7,
+"texture": ExtResource("338_07pgv")
+}, {
+"duration": 0.7,
+"texture": ExtResource("339_4exd7")
+}, {
+"duration": 0.7,
+"texture": ExtResource("340_rthed")
+}, {
+"duration": 0.7,
+"texture": ExtResource("341_kckna")
+}, {
+"duration": 0.7,
+"texture": ExtResource("342_ti1i6")
+}, {
+"duration": 0.7,
+"texture": ExtResource("343_5ht1h")
+}, {
+"duration": 0.7,
+"texture": ExtResource("344_lqj1k")
+}, {
+"duration": 0.7,
+"texture": ExtResource("345_wbt0w")
+}, {
+"duration": 0.7,
+"texture": ExtResource("346_3h8ra")
+}],
+"loop": false,
+"name": &"Poem",
+"speed": 5.0
+}]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n4s56"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyj50"]
@@ -1801,7 +2010,7 @@ texture_filter = 1
 position = Vector2(140, -99)
 scale = Vector2(1.21622, 1.21622)
 sprite_frames = SubResource("SpriteFrames_3bobo")
-animation = &"BadEnd"
+animation = &"Defaut"
 
 [node name="EcranTd" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -1829,7 +2038,7 @@ texture_filter = 1
 position = Vector2(-180.634, 16.2991)
 scale = Vector2(1.20296, 1.20296)
 sprite_frames = SubResource("SpriteFrames_4bjkk")
-animation = &"BadEnd"
+animation = &"Defaut"
 
 [node name="EcranTerre" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -1839,34 +2048,33 @@ sprite_frames = SubResource("SpriteFrames_yfo8w")
 animation = &"Defaut"
 
 [node name="MainScene" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(7.62939e-06, -6.67572e-06)
 scale = Vector2(1.19136, 1.19136)
 sprite_frames = SubResource("SpriteFrames_qdtvb")
-frame_progress = 0.319256
 
-[node name="PoemeCafe" type="Area2D" parent="."]
+[node name="Zvesrvsr" type="Sprite2D" parent="."]
 visible = false
-
-[node name="Poeme" type="Sprite2D" parent="PoemeCafe"]
-position = Vector2(219, -84)
-scale = Vector2(0.0962185, 0.0962185)
-texture = ExtResource("3_dkltr")
+position = Vector2(0.333346, -1.4782e-05)
+scale = Vector2(1.19136, 1.19136)
+texture = ExtResource("186_g2nb6")
 
 [node name="btn_loose1" type="Area2D" parent="."]
 position = Vector2(0, 115)
 script = ExtResource("4_lp3a4")
 
 [node name="Button" type="Button" parent="btn_loose1"]
-offset_left = -15.0
-offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 15.0
+offset_left = -18.0
+offset_top = 26.0
+offset_right = 18.0
+offset_bottom = 56.0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="btnAnnim" type="AnimatedSprite2D" parent="btn_loose1/Button"]
 texture_filter = 1
-position = Vector2(15, 15)
-scale = Vector2(0.9375, 0.9375)
+position = Vector2(18, 19)
+scale = Vector2(1.13224, 1.13224)
 sprite_frames = SubResource("SpriteFrames_ck3xl")
 animation = &"pressed"
 
@@ -1884,37 +2092,26 @@ wait_time = 60.0
 one_shot = true
 
 [node name="TimerLabel" type="Label" parent="."]
-offset_left = 269.0
-offset_top = -115.0
-offset_right = 314.0
-offset_bottom = -92.0
+offset_left = 266.0
+offset_top = -91.0
+offset_right = 311.0
+offset_bottom = -68.0
 text = "Timer"
 metadata/_edit_use_anchors_ = true
 
-[node name="GridContainer" type="GridContainer" parent="."]
-visible = false
-offset_left = -180.0
-offset_top = -32.0
-offset_right = -98.0
-offset_bottom = 50.0
-pivot_offset = Vector2(477, 110)
-columns = 4
+[node name="DemineurActiveur" type="Area2D" parent="."]
+script = ExtResource("185_xofy3")
 
-[node name="FlagButton" type="Button" parent="."]
-offset_left = -665.0
-offset_top = -172.0
-offset_right = -573.0
-offset_bottom = -80.0
-pivot_offset = Vector2(396, 106)
-text = "d"
+[node name="Sprite2D" type="Sprite2D" parent="DemineurActiveur"]
+position = Vector2(-154.568, 156)
+scale = Vector2(0.949153, 0.949152)
+texture = ExtResource("194_bflrk")
 
-[node name="RevealButton" type="Button" parent="."]
-offset_left = -671.0
-offset_top = -9.0
-offset_right = -579.0
-offset_bottom = 83.0
-pivot_offset = Vector2(277, 107)
-text = "f"
+[node name="DemineurActiveurBtn" type="Button" parent="DemineurActiveur"]
+offset_left = -201.0
+offset_top = 128.0
+offset_right = -107.0
+offset_bottom = 184.0
 
 [node name="Loose6" type="Sprite2D" parent="."]
 visible = false
@@ -1960,6 +2157,7 @@ offset_top = 97.0
 offset_right = 99.0
 offset_bottom = 128.0
 text = "0"
+metadata/_edit_use_anchors_ = true
 
 [node name="Digicodebtn2" type="Button" parent="Digicode"]
 offset_left = 101.0
@@ -1967,6 +2165,7 @@ offset_top = 97.0
 offset_right = 119.0
 offset_bottom = 128.0
 text = "0"
+metadata/_edit_use_anchors_ = true
 
 [node name="Digicodebtn3" type="Button" parent="Digicode"]
 offset_left = 122.0
@@ -1974,6 +2173,7 @@ offset_top = 97.0
 offset_right = 140.0
 offset_bottom = 128.0
 text = "0"
+metadata/_edit_use_anchors_ = true
 
 [node name="btnGamma" type="Area2D" parent="."]
 visible = false
@@ -2051,6 +2251,7 @@ offset_top = -124.0
 offset_right = -256.0
 offset_bottom = -95.0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="AfficheEnrouler" type="Button" parent="Poster"]
 offset_left = -332.0
@@ -2058,6 +2259,7 @@ offset_top = -126.0
 offset_right = -257.0
 offset_bottom = -25.0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Affiche" type="AnimatedSprite2D" parent="Poster"]
 texture_filter = 1
@@ -2074,6 +2276,7 @@ offset_top = -57.0
 offset_right = 268.0
 offset_bottom = -41.0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="C" type="Sprite2D" parent="Cafe/C"]
 texture_filter = 1
@@ -2086,6 +2289,7 @@ offset_top = -57.0
 offset_right = 281.0
 offset_bottom = -41.0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="A" type="Sprite2D" parent="Cafe/A"]
 texture_filter = 1
@@ -2098,6 +2302,7 @@ offset_top = -57.0
 offset_right = 293.0
 offset_bottom = -41.0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="F" type="Sprite2D" parent="Cafe/F"]
 texture_filter = 1
@@ -2110,6 +2315,7 @@ offset_top = -57.0
 offset_right = 305.0
 offset_bottom = -41.0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="E" type="Sprite2D" parent="Cafe/E"]
 texture_filter = 1
@@ -2126,6 +2332,7 @@ offset_top = -41.0
 offset_right = 35.0
 offset_bottom = 52.0
 disabled = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Levier" type="AnimatedSprite2D" parent="Levier/Levier"]
 texture_filter = 1
@@ -2142,6 +2349,7 @@ offset_left = -25.0
 offset_top = -29.0
 offset_right = 31.0
 offset_bottom = 22.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Marteau/marteauBtn"]
 position = Vector2(28, 27)
@@ -2149,209 +2357,209 @@ scale = Vector2(0.086914, 0.086914)
 texture = ExtResource("22_1pjbj")
 
 [node name="screen" type="Area2D" parent="."]
-visible = false
 script = ExtResource("26_ewuo0")
 
 [node name="ScreenSprite" type="Sprite2D" parent="screen"]
 texture_filter = 1
-position = Vector2(-138, 105)
+position = Vector2(-136.821, 98.7499)
 scale = Vector2(1.32051, 1.32051)
 texture = ExtResource("27_majqq")
 
 [node name="T" type="Button" parent="screen"]
-offset_left = -179.0
-offset_top = 104.0
-offset_right = -168.0
-offset_bottom = 112.0
+offset_left = -177.821
+offset_top = 97.7499
+offset_right = -166.821
+offset_bottom = 105.75
 flat = true
 
 [node name="N" type="Button" parent="screen"]
-offset_left = -167.0
-offset_top = 104.0
-offset_right = -155.0
-offset_bottom = 112.0
+offset_left = -165.821
+offset_top = 97.7499
+offset_right = -153.821
+offset_bottom = 105.75
 scale = Vector2(0.999999, 0.999999)
 flat = true
 
 [node name="R" type="Button" parent="screen"]
-offset_left = -154.0
-offset_top = 104.0
-offset_right = -143.0
-offset_bottom = 113.0
+offset_left = -152.821
+offset_top = 97.7499
+offset_right = -141.821
+offset_bottom = 106.75
 scale = Vector2(0.999999, 0.999999)
 flat = true
 
 [node name="C" type="Button" parent="screen"]
-offset_left = -169.0
-offset_top = 114.0
-offset_right = -158.0
-offset_bottom = 122.0
+offset_left = -167.821
+offset_top = 107.75
+offset_right = -156.821
+offset_bottom = 115.75
 scale = Vector2(0.999999, 0.999999)
 flat = true
 
 [node name="W" type="Button" parent="screen"]
-offset_left = -156.0
-offset_top = 114.0
-offset_right = -144.0
-offset_bottom = 122.0
+offset_left = -154.821
+offset_top = 107.75
+offset_right = -142.821
+offset_bottom = 115.75
 scale = Vector2(0.999999, 0.999999)
 flat = true
 
 [node name="L" type="Button" parent="screen"]
-offset_left = -143.0
-offset_top = 114.0
-offset_right = -131.0
-offset_bottom = 122.0
+offset_left = -141.821
+offset_top = 107.75
+offset_right = -129.821
+offset_bottom = 115.75
 scale = Vector2(0.999999, 0.999999)
 flat = true
 
 [node name="U" type="Button" parent="screen"]
-offset_left = -130.0
-offset_top = 114.0
-offset_right = -119.0
-offset_bottom = 122.0
+offset_left = -128.821
+offset_top = 107.75
+offset_right = -117.821
+offset_bottom = 115.75
 scale = Vector2(0.999999, 0.999999)
 flat = true
 
 [node name="D" type="Button" parent="screen"]
-offset_left = -174.0
-offset_top = 122.0
-offset_right = -162.0
-offset_bottom = 130.0
+offset_left = -172.821
+offset_top = 115.75
+offset_right = -160.821
+offset_bottom = 123.75
 flat = true
 
 [node name="E" type="Button" parent="screen"]
-offset_left = -161.0
-offset_top = 122.0
-offset_right = -149.0
-offset_bottom = 130.0
+offset_left = -159.821
+offset_top = 115.75
+offset_right = -147.821
+offset_bottom = 123.75
 flat = true
 
 [node name="V" type="Button" parent="screen"]
-offset_left = -148.0
-offset_top = 122.0
-offset_right = -136.0
-offset_bottom = 130.0
+offset_left = -146.821
+offset_top = 115.75
+offset_right = -134.821
+offset_bottom = 123.75
 flat = true
 
 [node name="B" type="Button" parent="screen"]
-offset_left = -135.0
-offset_top = 122.0
-offset_right = -122.0
-offset_bottom = 130.0
+offset_left = -133.821
+offset_top = 115.75
+offset_right = -120.821
+offset_bottom = 123.75
 flat = true
 
 [node name="I" type="Button" parent="screen"]
-offset_left = -142.0
-offset_top = 105.0
-offset_right = -131.0
-offset_bottom = 113.0
+offset_left = -140.821
+offset_top = 98.7499
+offset_right = -129.821
+offset_bottom = 106.75
 flat = true
 
 [node name="P" type="Button" parent="screen"]
-offset_left = -182.0
-offset_top = 114.0
-offset_right = -171.0
-offset_bottom = 122.0
+offset_left = -180.821
+offset_top = 107.75
+offset_right = -169.821
+offset_bottom = 115.75
 flat = true
 
 [node name="A" type="Button" parent="screen"]
-offset_left = -186.0
-offset_top = 122.0
-offset_right = -176.0
-offset_bottom = 130.0
+offset_left = -184.821
+offset_top = 115.75
+offset_right = -174.821
+offset_bottom = 123.75
 flat = true
 
 [node name="BackDash" type="Button" parent="screen"]
-offset_left = -117.0
-offset_top = 104.0
-offset_right = -90.0
-offset_bottom = 112.0
+offset_left = -115.821
+offset_top = 97.7499
+offset_right = -88.8206
+offset_bottom = 105.75
 flat = true
 
 [node name="Valider" type="Button" parent="screen"]
-offset_left = -106.0
-offset_top = 122.0
-offset_right = -94.0
-offset_bottom = 130.0
+offset_left = -104.821
+offset_top = 115.75
+offset_right = -92.8206
+offset_bottom = 123.75
 flat = true
 
 [node name="Lettre1" type="Sprite2D" parent="screen"]
 texture_filter = 1
-position = Vector2(-171.292, 89.0357)
+position = Vector2(-170.113, 82.7856)
 scale = Vector2(1.34524, 1.34524)
 
 [node name="Lettre2" type="Sprite2D" parent="screen"]
 texture_filter = 1
-position = Vector2(-159.292, 89.0357)
+position = Vector2(-158.113, 82.7856)
 scale = Vector2(1.34524, 1.34524)
 
 [node name="Lettre3" type="Sprite2D" parent="screen"]
 texture_filter = 1
-position = Vector2(-147.292, 89.0357)
+position = Vector2(-146.113, 82.7856)
 scale = Vector2(1.34524, 1.34524)
 
 [node name="Lettre4" type="Sprite2D" parent="screen"]
 texture_filter = 1
-position = Vector2(-135.292, 89.0357)
+position = Vector2(-134.113, 82.7856)
 scale = Vector2(1.34524, 1.34524)
 
 [node name="Lettre5" type="Sprite2D" parent="screen"]
 texture_filter = 1
-position = Vector2(-123.292, 89.0357)
+position = Vector2(-122.113, 82.7856)
 scale = Vector2(1.34524, 1.34524)
 
 [node name="Lettre6" type="Sprite2D" parent="screen"]
 texture_filter = 1
-position = Vector2(-112, 89)
+position = Vector2(-110.821, 82.7499)
 scale = Vector2(1.34524, 1.34524)
 
 [node name="coffreFort" type="Area2D" parent="."]
-visible = false
 position = Vector2(11, 160)
 script = ExtResource("26_skrdv")
 
 [node name="coffreFortBtn" type="Button" parent="coffreFort"]
-offset_left = -11.0
-offset_top = -19.0
-offset_right = 13.0
-offset_bottom = 1.0
+offset_left = -23.0
+offset_top = -71.0
+offset_right = 1.0
+offset_bottom = -47.0
 flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="coffreFortSprite" type="AnimatedSprite2D" parent="coffreFort/coffreFortBtn"]
 texture_filter = 1
-position = Vector2(11, 19)
+position = Vector2(11, 22)
+scale = Vector2(1.21053, 1.21053)
 sprite_frames = SubResource("SpriteFrames_c1onu")
 animation = &"restart"
 frame = 1
 frame_progress = 0.586921
 
 [node name="coffreFortValidationBtn" type="Button" parent="coffreFort"]
-offset_left = 20.0
-offset_top = 9.0
-offset_right = 32.0
-offset_bottom = 18.0
+offset_left = 13.0
+offset_top = -41.0
+offset_right = 29.0
+offset_bottom = -27.0
 flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="coffreFortValidationSprite" type="AnimatedSprite2D" parent="coffreFort/coffreFortValidationBtn"]
 texture_filter = 1
-position = Vector2(6, 5)
+position = Vector2(8, 6)
+scale = Vector2(1.34615, 1.34615)
 sprite_frames = SubResource("SpriteFrames_twwof")
 animation = &"press"
 
 [node name="Cable" type="Area2D" parent="."]
-visible = false
 position = Vector2(-77, 113)
 
 [node name="cables" type="Sprite2D" parent="Cable"]
 texture_filter = 1
-position = Vector2(202, 45)
+position = Vector2(186, -6)
 scale = Vector2(1.11039, 1.11039)
 texture = ExtResource("36_arflu")
 
 [node name="Area2DNoir" type="Area2D" parent="Cable" groups=["Noir"]]
+position = Vector2(-16, -50)
 
 [node name="noir" type="CollisionShape2D" parent="Cable/Area2DNoir" groups=["Noir", "couleur"]]
 position = Vector2(188, 40.5)
@@ -2359,13 +2567,14 @@ scale = Vector2(1.23296, 1.23296)
 shape = SubResource("RectangleShape2D_d1dr8")
 
 [node name="Area2Dcian" type="Area2D" parent="Cable" groups=["Cyan"]]
-position = Vector2(207.5, 41.25)
+position = Vector2(191.5, -8.75)
 scale = Vector2(1.23296, 1.23296)
 
 [node name="cian" type="CollisionShape2D" parent="Cable/Area2Dcian" groups=["Cyan", "couleur"]]
 shape = SubResource("RectangleShape2D_d1dr8")
 
 [node name="Area2DBlanc" type="Area2D" parent="Cable" groups=["Blanc"]]
+position = Vector2(-16, -50)
 
 [node name="blanc" type="CollisionShape2D" parent="Cable/Area2DBlanc" groups=["Blanc", "couleur"]]
 position = Vector2(173.5, 41.5)
@@ -2373,6 +2582,7 @@ scale = Vector2(1.11039, 1.11039)
 shape = SubResource("RectangleShape2D_d1dr8")
 
 [node name="Area2DMengenta" type="Area2D" parent="Cable" groups=["Magenta"]]
+position = Vector2(-16, -50)
 
 [node name="mengenta" type="CollisionShape2D" parent="Cable/Area2DMengenta" groups=["Magenta", "couleur"]]
 position = Vector2(224.5, 42.125)
@@ -2382,17 +2592,16 @@ shape = SubResource("RectangleShape2D_d1dr8")
 [node name="endBtn" type="Area2D" parent="."]
 
 [node name="Pince" type="Area2D" parent="."]
-visible = false
-position = Vector2(-52, 164)
+position = Vector2(1, 109)
 script = ExtResource("37_mqcue")
 
 [node name="Pince" type="Sprite2D" parent="Pince"]
-position = Vector2(-6, -0.999985)
+position = Vector2(-2.62098, 7.495)
 scale = Vector2(0.0667972, 0.0667972)
 texture = ExtResource("38_y74cj")
 
 [node name="ColisionPinse" type="CollisionShape2D" parent="Pince"]
-position = Vector2(13.5, -9)
+position = Vector2(16.879, -0.50502)
 shape = SubResource("RectangleShape2D_uljxw")
 
 [node name="SpineurSprite" type="Area2D" parent="."]
@@ -2402,59 +2611,143 @@ script = ExtResource("49_12j15")
 
 [node name="SpineurSprite" type="Sprite2D" parent="SpineurSprite"]
 texture_filter = 1
+position = Vector2(228, -5)
 texture = ExtResource("50_rmxk4")
 
 [node name="Spincomp1" type="Button" parent="SpineurSprite"]
-offset_left = -58.0
-offset_top = 10.0
-offset_right = -32.0
-offset_bottom = 43.0
+offset_left = 170.0
+offset_top = 5.0
+offset_right = 196.0
+offset_bottom = 38.0
 flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Spincomp1" type="AnimatedSprite2D" parent="SpineurSprite/Spincomp1"]
 texture_filter = 1
-position = Vector2(12, 17)
+position = Vector2(11, 17)
 sprite_frames = SubResource("SpriteFrames_wxy4i")
 
 [node name="Spincomp2" type="Button" parent="SpineurSprite"]
-offset_left = -30.0
-offset_top = 10.0
-offset_right = -4.0
-offset_bottom = 43.0
+offset_left = 198.0
+offset_top = 5.0
+offset_right = 224.0
+offset_bottom = 38.0
 flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Spincomp2" type="AnimatedSprite2D" parent="SpineurSprite/Spincomp2"]
 texture_filter = 1
-position = Vector2(12, 17)
+position = Vector2(11, 17)
 sprite_frames = SubResource("SpriteFrames_h1gej")
 
 [node name="Spincomp3" type="Button" parent="SpineurSprite"]
-offset_left = -2.0
-offset_top = 10.0
-offset_right = 24.0
-offset_bottom = 44.0
+offset_left = 226.0
+offset_top = 5.0
+offset_right = 252.0
+offset_bottom = 39.0
 flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Spincomp3" type="AnimatedSprite2D" parent="SpineurSprite/Spincomp3"]
 texture_filter = 1
-position = Vector2(12, 17)
+position = Vector2(11, 17)
 sprite_frames = SubResource("SpriteFrames_hu8lj")
+frame_progress = 1.0
 
 [node name="Spincomp4" type="Button" parent="SpineurSprite"]
-offset_left = 26.0
-offset_top = 10.0
-offset_right = 52.0
-offset_bottom = 43.0
+offset_left = 254.0
+offset_top = 5.0
+offset_right = 280.0
+offset_bottom = 38.0
 flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Spincomp4" type="AnimatedSprite2D" parent="SpineurSprite/Spincomp4"]
 texture_filter = 1
-position = Vector2(12, 17)
+position = Vector2(10, 17)
 sprite_frames = SubResource("SpriteFrames_xpj43")
+
+[node name="Spinend" type="AnimatedSprite2D" parent="SpineurSprite"]
+texture_filter = 1
+position = Vector2(232, -52)
+scale = Vector2(1.00363, 1.00363)
+sprite_frames = SubResource("SpriteFrames_oa85a")
+animation = &"defaut"
+
+[node name="Fax" type="Area2D" parent="."]
+script = ExtResource("325_6jvb1")
+
+[node name="Fax" type="AnimatedSprite2D" parent="Fax"]
+position = Vector2(292, -149)
+sprite_frames = SubResource("SpriteFrames_848g5")
+animation = &"Poem"
+
+[node name="PoemBtn" type="Button" parent="Fax"]
+offset_left = 267.0
+offset_top = -168.0
+offset_right = 315.0
+offset_bottom = -107.0
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="poemZoom" type="Area2D" parent="."]
+visible = false
+
+[node name="PoemOut" type="Button" parent="poemZoom"]
+offset_left = -358.0
+offset_top = -200.0
+offset_right = 351.0
+offset_bottom = 198.0
+flat = true
+
+[node name="Poem" type="Sprite2D" parent="poemZoom"]
+position = Vector2(-1, -14)
+scale = Vector2(1.03395, 1.03395)
+texture = ExtResource("349_gl0ds")
+
+[node name="Demineur" type="Area2D" parent="."]
+visible = false
+position = Vector2(-180, -32)
+
+[node name="DemineurSortis" type="Button" parent="Demineur"]
+offset_left = -190.0
+offset_top = -190.0
+offset_right = 542.0
+offset_bottom = 275.0
+flat = true
+
+[node name="Minezoom1" type="Sprite2D" parent="Demineur"]
+texture_filter = 1
+position = Vector2(180.5, 31.5)
+scale = Vector2(1.20175, 1.19444)
+texture = ExtResource("366_4dcxm")
+
+[node name="FlagButton" type="Button" parent="Demineur"]
+texture_filter = 1
+offset_left = 390.0
+offset_top = -115.0
+offset_right = 510.0
+offset_bottom = 5.0
+icon = ExtResource("368_83osm")
+metadata/_edit_use_anchors_ = true
+
+[node name="RevealButton" type="Button" parent="Demineur"]
+texture_filter = 1
+offset_left = 389.0
+offset_top = 15.0
+offset_right = 509.0
+offset_bottom = 135.0
+icon = ExtResource("367_2kjwi")
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Demineur" type="GridContainer" parent="Demineur"]
+offset_left = 35.0
+offset_top = -146.0
+offset_right = 164.0
+offset_bottom = -36.0
+pivot_offset = Vector2(477, 110)
+columns = 4
 
 [node name="NoteContener" type="Area2D" parent="."]
 visible = false
@@ -2495,6 +2788,7 @@ offset_top = -186.0
 offset_right = -273.0
 offset_bottom = -157.0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Help" type="Sprite2D" parent="UI/Help"]
 position = Vector2(15, 14)
@@ -2506,6 +2800,7 @@ offset_top = -187.0
 offset_right = -307.0
 offset_bottom = -158.0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Pause" type="Sprite2D" parent="UI/Pause"]
 position = Vector2(15, 15)
@@ -2517,6 +2812,7 @@ offset_top = -187.0
 offset_right = -239.0
 offset_bottom = -157.0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Notes" type="Sprite2D" parent="UI/Notes"]
 position = Vector2(15, 15)
@@ -2694,6 +2990,27 @@ offset_bottom = 508.0
 theme_override_fonts/font = ExtResource("20_avwu8")
 text = "Oupsi 😇... C'est quoi l'erreur 163 ? 
 Resseti serait hors de lui !"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MenueCanard" type="Area2D" parent="."]
+visible = false
+position = Vector2(-688, -388)
+
+[node name="FondColor" type="ColorRect" parent="MenueCanard"]
+offset_left = 345.0
+offset_top = 195.0
+offset_right = 1032.0
+offset_bottom = 582.0
+color = Color(0.322428, 0.227796, 0.228128, 0.670588)
+
+[node name="TextEndLabel" type="Label" parent="MenueCanard"]
+offset_left = 414.0
+offset_top = 415.0
+offset_right = 966.0
+offset_bottom = 508.0
+theme_override_fonts/font = ExtResource("20_avwu8")
+text = "WALLID aime les canards <3<3<3"
 horizontal_alignment = 1
 autowrap_mode = 3
 
