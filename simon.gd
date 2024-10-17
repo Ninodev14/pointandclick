@@ -1,135 +1,141 @@
 extends Node2D
 
-var sequence = [] 
+@onready var button_vert = $Vert
+@onready var button_noir = $Noir
+@onready var button_rouge = $Rouge
+@onready var button_jaune = $Jaune
+@onready var animation_player = $AnimatedSimons
+@onready var lonely_animation_player =  $"../AnimatedLonely"
+@onready var fax = $"../Fax" # Référence au nœud Fax
+@onready var faxAnnim = $"../Fax/Fax"
+@onready var poem_button = $"../Fax/PoemBtn" # Référence au bouton PoemBtn
+
+var base_sequence = [0, 1, 2, 1, 0, 3] 
 var player_input = []
-var colors = []
-var original_colors = []
-var current_color_index = 0
-var current_round = 1
-var is_showing_sequence = false
-var is_waiting_for_input = false
+var is_player_turn = false
+var current_sequence = []
 
-var predefined_sequence = [2, 0, 1, 0, 2, 3]
-
-var is_rose_flashing = true  # Variable to control the pink light flashing
-var rose_flash_timer = null  # Timer reference for flashing
+var animating_black = false
 
 func _ready():
-	colors = [$Orange, $Vert, $Rose, $Bleu]
-	for color in colors:
-		original_colors.append(color.modulate)
-
-	sequence = predefined_sequence.duplicate()
-	
-	# Start the flashing of the pink light
-	start_rose_flashing()
-
 	start_new_round()
 
+	button_vert.connect("pressed", Callable(self, "_on_ButtonVert_pressed"))
+	button_noir.connect("pressed", Callable(self, "_on_ButtonNoir_pressed"))
+	button_rouge.connect("pressed", Callable(self, "_on_ButtonRouge_pressed"))
+	button_jaune.connect("pressed", Callable(self, "_on_ButtonJaune_pressed"))
+
+	animating_black = true
+	animate_black()
+
+func animate_black():
+	while animating_black:
+		animation_player.play("noir")
+		lonely_animation_player.play("noir")
+		await get_tree().create_timer(2).timeout 
+		animation_player.stop()
+		lonely_animation_player.stop()
+		await get_tree().create_timer(0.5).timeout 
+
 func start_new_round():
+	print("Nouvelle ronde!")
 	player_input.clear()
-	current_color_index = 0
-	show_sequence()
-
-func show_sequence() -> void:
-	is_showing_sequence = true
-	is_waiting_for_input = false
-	for i in range(current_round):
-		var color_to_show = sequence[i]
-		colors[color_to_show].modulate = Color(2, 2, 2)
-		await get_tree().create_timer(0.2).timeout
-		colors[color_to_show].modulate = original_colors[color_to_show]
-		await get_tree().create_timer(0.1).timeout
-	is_showing_sequence = false
-	is_waiting_for_input = true
-
-# Function to handle color click and flashing
-func _handle_color_click(color_index: int) -> void:
-	if is_showing_sequence or not is_waiting_for_input:
-		return
-	
-	# Change the color temporarily
-	colors[color_index].modulate = Color(2, 2, 2)  # Make it brighter
-	await get_tree().create_timer(0.2).timeout
-	colors[color_index].modulate = original_colors[color_index]
-	
-	if current_color_index < current_round and color_index == sequence[current_color_index]:
-		player_input.append(color_index)
-		current_color_index += 1
-		if current_color_index == current_round:
-			if current_round < sequence.size():
-				current_round += 1
-				await get_tree().create_timer(0.2).timeout
-				start_new_round()
-			else:
-				var digicode = $"../Digicode"
-				if digicode:
-					digicode.visible = false
-			
-				var btn_gamma = $"../btnGamma"
-				if btn_gamma:
-					btn_gamma.visible = false 
-				
-				var simon = $"."
-				if simon:
-					simon.visible = false 
-				# Jouer l'animation Poem
-				var animation_player = $"../Fax/Fax"
-				if animation_player:  # Vérifier si l'animation player existe
-					animation_player.play("Poem")  # Lancez l'animation Poem
-				
-					# Attendre que l'animation se termine
-					while animation_player.is_playing():
-						await get_tree().create_timer(0.1).timeout
-				
-					# Afficher le bouton après l'animation
-					var poem_btn = $"../Fax/PoemBtn"
-					if poem_btn:
-						poem_btn.visible = true
-
-		else:
-			pass
+	if current_sequence.size() < base_sequence.size():
+		current_sequence.append(base_sequence[current_sequence.size()])
+		print("Séquence actuelle: ", current_sequence)
 	else:
-		var loose_sprite = $"../Loose6" 
-		loose_sprite.visible = true 
+		faxAnnim.play("Poem") 
+		await get_tree().create_timer(0.5).timeout
+		poem_button.show()
+		return
 
-func start_rose_flashing() -> void:
-	rose_flash_timer = Timer.new()
-	rose_flash_timer.wait_time = 1.0
-	rose_flash_timer.one_shot = false
-	add_child(rose_flash_timer) 
-	rose_flash_timer.start()
+	play_sequence()
 
-	flash_rose_periodically()
+func play_sequence():
+	is_player_turn = false
+	animating_black = false
+	print("Début de la séquence")
+	
+	for index in current_sequence:
+		match index:
+			0: # noir
+				animation_player.play("noir")
+				lonely_animation_player.play("noir")
+				await get_tree().create_timer(1).timeout
+			1: # rouge
+				animation_player.play("rouge")
+				lonely_animation_player.play("rouge")
+				await get_tree().create_timer(1).timeout
+			2: # jaune
+				animation_player.play("jaune")
+				lonely_animation_player.play("jaune")
+				await get_tree().create_timer(1).timeout
+			3: # vert
+				animation_player.play("vert")
+				lonely_animation_player.play("vert") 
+				await get_tree().create_timer(1).timeout
 
-func flash_rose_periodically() -> void:
-	while is_rose_flashing:
-		await flash_rose()
-		await rose_flash_timer.timeout  
+	print("Séquence terminée, tour du joueur")
+	is_player_turn = true
 
-func flash_rose() -> void:
-	if is_rose_flashing:
-		colors[2].modulate = Color(2, 2, 2) 
-		await get_tree().create_timer(0.2).timeout
-		colors[2].modulate = original_colors[2]
+func _on_ButtonVert_pressed():
+	print("Button Vert pressed")
+	if is_player_turn:
+		print("Input valid: Vert")
+		player_input.append(3)
+		play_button_animation(3)
 
-func _on_rose_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		_handle_color_click(2)
-		if rose_flash_timer:
-			is_rose_flashing = false
-			rose_flash_timer.stop()
-			if rose_flash_timer.get_parent() == self:
-				remove_child(rose_flash_timer)
+func _on_ButtonNoir_pressed():
+	print("Button Noir pressed")
+	if is_player_turn:
+		print("Input valid: Noir")
+		player_input.append(0)
+		play_button_animation(0)
+		
+func _on_ButtonRouge_pressed():
+	print("Button Rouge pressed")
+	if is_player_turn:
+		print("Input valid: Rouge")
+		player_input.append(1)
+		play_button_animation(1)
 
-func _on_bleu_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		_handle_color_click(3)
+func _on_ButtonJaune_pressed():
+	print("Button Jaune pressed")
+	if is_player_turn:
+		print("Input valid: Jaune")
+		player_input.append(2)
+		play_button_animation(2)
 
-func _on_orange_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		_handle_color_click(0)
+func play_button_animation(index):
+	match index:
+		0: # noir
+			animation_player.play("noir")
+			lonely_animation_player.play("noir")
+		1: # rouge
+			animation_player.play("rouge")
+			lonely_animation_player.play("rouge")
+		2: # jaune
+			animation_player.play("jaune")
+			lonely_animation_player.play("jaune")
+		3: # vert
+			animation_player.play("vert")
+			lonely_animation_player.play("vert")
 
-func _on_vert_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		_handle_color_click(1)
+	await get_tree().create_timer(0.5).timeout
+
+	check_input()
+
+func check_input():
+	print("Entrée du joueur: ", player_input)
+	var correct = true
+	for i in range(player_input.size()):
+		if i >= current_sequence.size() or player_input[i] != current_sequence[i]:
+			correct = false
+			break
+
+	if !correct:
+		print("Erreur! Essayez encore.")
+		start_new_round()
+	elif player_input.size() == current_sequence.size():		
+
+		start_new_round()

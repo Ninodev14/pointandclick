@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://3exccgsppn6i"]
+
+[ext_resource type="Script" path="res://menu_principal.gd" id="1_5jyio"]
+
+[node name="Menu Principal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5jyio")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Commencer" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Commencer"
+
+[node name="Paramètre" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Paramètre"
+
+[node name="Succès" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Succès"
+
+[node name="Crédits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Crédits"
+
+[node name="Quitter" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quitter"
+
+[connection signal="pressed" from="VBoxContainer/Commencer" to="." method="_on_commencer_pressed"]
+[connection signal="pressed" from="VBoxContainer/Paramètre" to="." method="_on_paramètre_pressed"]
+[connection signal="pressed" from="VBoxContainer/Succès" to="." method="_on_succès_pressed"]
+[connection signal="pressed" from="VBoxContainer/Crédits" to="." method="_on_crédits_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quitter" to="." method="_on_quitter_pressed"]

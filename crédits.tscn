@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://3bbmgtoo7iq8"]
+
+[ext_resource type="Script" path="res://crédits.gd" id="1_s25p2"]
+
+[node name="crédits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s25p2")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 807.0
+offset_bottom = 455.0
+text = "Tesssst "
+
+[node name="retour_crédits" type="Button" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 260.0
+offset_right = 466.0
+offset_bottom = 291.0
+text = "retour"
+
+[connection signal="pressed" from="retour_crédits" to="." method="_on_retour_crédits_pressed"]

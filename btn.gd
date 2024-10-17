@@ -35,7 +35,9 @@ func _on_bouton_pressed() -> void:
 	noClick.show()
 	explosionAnim.play("Explosion")
 	explosionAnnim = 1
-
+	Manageur.Earthboom71 = 1
+	print(Manageur.Earthboom71)
+	
 func _reset_animation() -> void:
 	btnAnnime.play("Unpressed")
 

@@ -8,6 +8,7 @@ extends Node2D
 var bomb_positions: Array[Vector2i] = []
 var grid_cells: Array = []
 var current_cell_position: Vector2i
+var Timerstarted = 0
 
 @onready var timer = Timer.new()
 @onready var element_to_keep = $NoteContener/Note
@@ -37,6 +38,8 @@ var current_cell_position: Vector2i
 @onready var menueEnd = $MenueBadEnd
 @onready var noClick = $NoClick
 
+@onready var main_scene_animation_player = $MainScene  # Assurez-vous que MainScene est un AnimatedSprite2D
+
 # Variable pour suivre l'état des animations
 var animations_finished = {
 	"EcranVille": false,
@@ -61,11 +64,7 @@ func _ready() -> void:
 	menueEnd.visible = false
 	music_player.play()
 	create_grid()
-	add_child(timer)
-	timer.wait_time = 300
-	timer.one_shot = true
-	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
-	timer.start()
+
 
 	reset_button.connect("pressed", Callable(self, "_on_reset_button_pressed"))
 	reset_button.disabled = false
@@ -173,10 +172,19 @@ func reveal_bombs():
 #------------------------------- TIMER ------------------------------------
 
 func _process(delta: float) -> void:
+	if Manageur.Startimer == 1:
+		if Timerstarted == 0:
+			add_child(timer)
+			timer.wait_time = 300
+			timer.one_shot = true
+			timer.connect("timeout", Callable(self, "_on_timer_timeout"))
+			timer.start()
+			Timerstarted = 1
 	if not is_paused and not timer.is_stopped():
 		var time_left = int(timer.time_left)
 		label.text = str(time_left) + " s"
 
+		# Affiche le sprite et joue l'animation quand il reste 270 secondes
 		if time_left == 270 and not sprite_shown:
 			show_sprite_and_filter()
 
@@ -189,12 +197,17 @@ func _process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	noClick.show()
 	_save_element_data()
+	
+	# Joue les animations "BadEnd"
 	ecran_ville.play("BadEnd")
 	ecran_td.play("BadEnd")
 	ecran_foret.play("BadEnd")
 	ecran_glacier.play("BadEnd")
 	ecran_people.play("BadEnd")
 	ecran_terre.play("BadEnd")
+
+	# Commence à vérifier si toutes les animations sont terminées
+	_check_all_animations_finished()
 
 func _on_animation_finished(animation_name: String):
 	animations_finished[animation_name] = true
@@ -211,6 +224,9 @@ func _check_all_animations_finished() -> void:
 		menueEnd.visible = true
 		reset_button.show()
 		
+		# Joue l'animation par défaut après la fin de toutes les animations
+		main_scene_animation_player.play("default")  # Assurez-vous que "default" est le nom de votre animation par défaut
+
 func _save_element_data() -> void:
 	Manageur.saved_text = element_to_keep.text
 
@@ -297,6 +313,9 @@ func show_sprite_and_filter():
 	ecranEtain.visible = true 
 	black_filter.visible = true 
 	black_filter.modulate = Color(0, 0, 0, 1)
+
+	# Jouer l'animation "coupure" sur le MainScene
+	main_scene_animation_player.play("coupure")
 
 	# Attendre que le timer de 2 secondes expire
 	await get_tree().create_timer(2.0).timeout

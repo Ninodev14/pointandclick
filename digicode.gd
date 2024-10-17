@@ -15,42 +15,38 @@ var Area2d: Area2D
 # Variable pour savoir si le code est correct
 var code_correct: bool = false
 
-# Variable pour garder le code saisi
 var entered_code: String = ""
+var code_changed: bool = false 
 
-# Variable pour vérifier si le code a changé
-var code_changed: bool = false  # Nouvelle variable
-
-# Fonction pour gérer le clic sur un bouton
+# Appelé lorsqu'un bouton est pressé
 func _on_Button_pressed(button_name: String) -> void:
-	# Incrémente la valeur ou réinitialise à 0 si elle atteint 9
 	if button_values[button_name] < 9:
 		button_values[button_name] += 1
 	else:
-		button_values[button_name] = 0  # Réinitialiser à 0 si 9 atteint
+		button_values[button_name] = 0 
 
-	update_button_text(button_name)
+	update_button_animation(button_name)
 
-	# Vérifiez si le code est correct après avoir mis à jour les boutons
+	# Vérifiez si le code est correct
 	if button_values["Digicodebtn1"] == 1 and button_values["Digicodebtn2"] == 6 and button_values["Digicodebtn3"] == 3:
-		code_changed = false  # Réinitialiser le changement de code
-		code_correct = true  # Le code est correct
+		code_changed = false 
+		code_correct = true  
 		typeBtn =  0 
 		wait_and_show_sprite()  # Attendez 1 seconde avant d'afficher le sprite
 	elif button_values["Digicodebtn1"] == 3 and button_values["Digicodebtn2"] == 1 and button_values["Digicodebtn3"] == 2:
-		code_changed = false  # Réinitialiser le changement de code
-		code_correct = true  # Le code est correct
+		code_changed = false 
+		code_correct = true  
 		typeBtn =  1
-		wait_and_show_sprite()  # Attendez 1 seconde avant d'afficher le sprite
+		wait_and_show_sprite()  
 	else:
 		code_correct = false  # Le code n'est pas correct
 		code_changed = true  # Le code a changé
 
-
-func update_button_text(button_name: String) -> void:
-	var button = get_node(button_name)
-	button.text = str(button_values[button_name])
-
+# Met à jour l'animation du bouton
+func update_button_animation(button_name: String) -> void:
+	# Récupère le chemin du AnimatedSprite2D en fonction du bouton
+	var animated_sprite = get_node(button_name + "/" + button_name + "AnimatedSprite2D")
+	animated_sprite.play(str(button_values[button_name]))  # Joue l'animation correspondant à la valeur actuelle
 
 func wait_and_show_sprite() -> void:
 	var delay_timer = Timer.new()

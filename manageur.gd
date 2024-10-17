@@ -5,6 +5,7 @@ extends Node
 @export var hover_cursor = preload("res://cursor-hover.png")
 @export var click_cursor = preload("res://cursor-click.png")
 
+var Startimer = 0
 var saved_text = ""
 var saved_position = Vector2()
 var saved_rotation = 0.0
@@ -13,10 +14,12 @@ var music_volume: float = 0.5
 var sfx_volume: float = 0.5
 
 @onready var music_player: AudioStreamPlayer2D
+var Earthboom71 = ""
 
 func _ready() -> void:
 	set_default_cursor()
 	update_music_volume() 
+
 
 func set_default_cursor() -> void:
 	Input.set_custom_mouse_cursor(default_cursor)

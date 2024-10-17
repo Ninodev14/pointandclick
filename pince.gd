@@ -50,13 +50,8 @@ func _detect_color(area: Area2D) -> void:
 	elif area.is_in_group("Magenta"):
 		print("La pince a touché le magenta!")
 		hide()
-	else:
-		print("Couleur inconnue touchée.")
 
 func _play_cyan_animation() -> void:
-	if CannardAnim.is_playing():
-		print("Animation en cours, impossible de lancer une nouvelle animation.")
-		return
 	CannardAnim.play("Canard")
 	CannardAnim.connect("animation_finished", Callable(self, "_on_animation_finished"))  
 
@@ -67,5 +62,4 @@ func _on_animation_finished() -> void:
 		CannardAnim.disconnect("animation_finished", Callable(self, "_on_animation_finished")) 
 
 func _reset_position() -> void:
-	print("Aucune zone détectée. La pince revient à sa position initiale.")
 	position = initial_position

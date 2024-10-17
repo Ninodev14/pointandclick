@@ -3,6 +3,12 @@ extends Area2D
 var letters = []
 var filled_letter_count = 0  
 var current_input = ""  
+@onready var demnieur = $"../DemineurActiveur"
+@onready var coffreFort = $"../coffreFort"
+@onready var screen =  $"../screen"
+@onready var cable =  $"../Cable"
+@onready var spineur =  $"../SpineurSprite"
+@onready var btn =  $"../btn_loose1"
 
 func _ready() -> void:
 	letters.append($Lettre1)
@@ -49,6 +55,11 @@ func _on_backdash_pressed() -> void:
 func _on_validate_pressed() -> void:
 	if current_input == "WALLID": 
 		$"../endBtn".show() 
-		print("Code correct!")
+		spineur.hide()
+		cable.hide()
+		screen.hide()
+		coffreFort.hide()
+		demnieur.hide()
+		btn.hide()
 	else:
 		print("Code incorrect, réessayez.")

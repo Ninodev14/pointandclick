@@ -1,5 +1,6 @@
 extends Area2D
 
+var levierActioner = 0
 @onready var levier = $Levier 
 @onready var animation_player = $Levier/Levier
 @onready var demnieur = $"../DemineurActiveur"
@@ -19,10 +20,12 @@ func _ready() -> void:
 	spineur.visible = false
 
 func _on_levier_pressed() -> void:
-	animation_player.play("On")
-	demnieur.visible = true
-	coffreFort.visible = true
-	screen.visible = true
-	cable.visible = true
-	spineur.visible = true
-	animation_player.connect("animation_finished", Callable(self, "_on_animation_finished"))
+	if levierActioner == 0 :
+		animation_player.play("On")
+		demnieur.visible = true
+		levierActioner = 1
+		coffreFort.visible = true
+		screen.visible = true
+		cable.visible = true
+		spineur.visible = true
+		animation_player.connect("animation_finished", Callable(self, "_on_animation_finished"))

@@ -1,0 +1,139 @@
+[gd_scene load_steps=12 format=3 uid="uid://dn3nkwmin2tvn"]
+
+[ext_resource type="Texture2D" uid="uid://cpp7lttw7nxa5" path="res://book/book1.png" id="1_av1on"]
+[ext_resource type="Texture2D" uid="uid://p2jc0nyl1mcq" path="res://book/book2.png" id="2_6dd05"]
+[ext_resource type="Texture2D" uid="uid://bc66we0dx38dq" path="res://book/book3.png" id="3_h52j6"]
+[ext_resource type="Texture2D" uid="uid://c8lth461yryc4" path="res://book/book4.png" id="4_wdyxn"]
+[ext_resource type="Texture2D" uid="uid://u2vyu7f5gwru" path="res://book/book5.png" id="5_kvkcn"]
+[ext_resource type="Texture2D" uid="uid://phjpjuqbstp2" path="res://book/book6.png" id="6_nglqh"]
+[ext_resource type="Texture2D" uid="uid://bocjj20bj383p" path="res://book/book7.png" id="7_cb4uw"]
+[ext_resource type="Texture2D" uid="uid://ccqg7tn6wmwnl" path="res://book/book8.png" id="8_qnfm0"]
+[ext_resource type="Script" path="res://livre.gd" id="9_jo0p6"]
+[ext_resource type="Texture2D" uid="uid://c758hgqlmy6lm" path="res://earthsplosion2/earthboom71.png" id="10_kjn73"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8rvtw"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("1_av1on")
+}, {
+"duration": 0.5,
+"texture": ExtResource("2_6dd05")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_h52j6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_wdyxn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_kvkcn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_nglqh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_cb4uw")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_qnfm0")
+}],
+"loop": false,
+"name": &"changer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("1_av1on")
+}, {
+"duration": 0.5,
+"texture": ExtResource("2_6dd05")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_h52j6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_wdyxn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_kvkcn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_nglqh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_cb4uw")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_qnfm0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("8_qnfm0")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_cb4uw")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_nglqh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_kvkcn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_wdyxn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_h52j6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("2_6dd05")
+}, {
+"duration": 0.5,
+"texture": ExtResource("1_av1on")
+}],
+"loop": false,
+"name": &"revenir",
+"speed": 5.0
+}]
+
+[node name="succès" type="Node2D"]
+
+[node name="Livre" type="AnimatedSprite2D" parent="."]
+position = Vector2(530, 248)
+scale = Vector2(1.2691, 1.21605)
+sprite_frames = SubResource("SpriteFrames_8rvtw")
+animation = &"changer"
+script = ExtResource("9_jo0p6")
+
+[node name="changer" type="Button" parent="Livre"]
+offset_left = 261.0
+offset_top = 20.0
+offset_right = 332.0
+offset_bottom = 51.0
+text = "changer"
+metadata/_edit_use_anchors_ = true
+
+[node name="revenir" type="Button" parent="Livre"]
+offset_left = -326.216
+offset_right = -262.216
+offset_bottom = 31.0
+text = "revenir"
+metadata/_edit_use_anchors_ = true
+
+[node name="Earthboom71" type="Sprite2D" parent="Livre"]
+position = Vector2(-71.7045, -45.2284)
+scale = Vector2(0.182399, 0.190355)
+texture = ExtResource("10_kjn73")
+
+[node name="retour_succès" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Livre/changer" to="Livre" method="_on_changer_pressed"]
+[connection signal="pressed" from="Livre/revenir" to="Livre" method="_on_revenir_pressed"]
