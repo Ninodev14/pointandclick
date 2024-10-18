@@ -31,7 +31,7 @@ func _ready():
 func animate_black():
 	while animating_black:
 		animation_player.play("noir")
-		lonely_animation_player.play("noir")
+
 		await get_tree().create_timer(2).timeout 
 		animation_player.stop()
 		lonely_animation_player.stop()
@@ -60,7 +60,6 @@ func play_sequence():
 		match index:
 			0: # noir
 				animation_player.play("noir")
-				lonely_animation_player.play("noir")
 				await get_tree().create_timer(1).timeout
 			1: # rouge
 				animation_player.play("rouge")

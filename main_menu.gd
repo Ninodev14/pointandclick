@@ -11,3 +11,4 @@ func _ready() -> void:
 # Fonction appelée lorsqu'on clique sur le bouton
 func _on_Button_pressed() -> void:
 	camera.position = Menu
+	$"../GoodEnding".stop()

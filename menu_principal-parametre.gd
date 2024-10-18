@@ -9,3 +9,7 @@ func _ready() -> void:
 
 func _on_Button_pressed() -> void:
 	camera.position = Menu
+	$BadEndingV2.stop()
+	$CanrdV2Mp3.stop()
+	$"../../FinThanos".stop()
+	$"../../FinSatanique".stop()

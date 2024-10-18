@@ -21,6 +21,7 @@ func _on_Button_pressed() -> void:
 	btn_anim.play("pressed")
 	main_scene.play("victoire") 
 	is_pressed_animation_playing = true
+	$"../GoodEnding".play()
 	Noclick.show()
 
 func _on_Animation_finished() -> void:

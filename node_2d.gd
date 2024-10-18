@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var grid_size: int = 8 
+@export var grid_size: int = 8
 @export var initial_cells_to_reveal: Array[Vector2i] = [
 	Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4)
 ]
@@ -22,13 +22,22 @@ var Timerstarted = 0
 @onready var settings_button: Button = $PauseMenu/Parametres
 @onready var settings_menu = $SettingsMenu
 @onready var back_button: Button = $SettingsMenu/Retour
-@onready var pause_on_notes_checkbox: CheckBox = $SettingsMenu/ReadNoteTimerCheck 
+@onready var pause_on_notes_checkbox: CheckBox = $SettingsMenu/ReadNoteTimerCheck
 
-@onready var music_player: AudioStreamPlayer2D = $SonMenu
-@onready var sfx_players: Array = [$btn_loose1/btnSound, $btnSound2]
+@onready var music_players: Array = [
+	$GoodEnding,
+	$BadEndingV2, 
+	$CanrdV2Mp3
+]
 
-@onready var ecranEtain: Sprite2D = $ecranEtain 
-@onready var black_filter: ColorRect = $BlackFilter 
+@onready var sfx_players: Array = [
+	$btn_loose1/btnSound,
+	$btnSound2,
+	$Error
+]
+
+@onready var ecranEtain: Sprite2D = $ecranEtain
+@onready var black_filter: ColorRect = $BlackFilter
 @onready var ecran_ville = $EcranVille
 @onready var ecran_td = $EcranTd
 @onready var ecran_foret = $EcranForet
@@ -54,46 +63,37 @@ var remaining_time: float = 0
 var sprite_shown: bool = false
 
 func _ready() -> void:
-	# Les boutons conservent leur position définie dans l'éditeur
+	# Connexion des signaux d'animations
 	ecran_ville.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranVille"))
 	ecran_td.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranTd"))
 	ecran_foret.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranForet"))
 	ecran_glacier.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranGlacier"))
 	ecran_people.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranPeople"))
 	ecran_terre.connect("animation_finished", Callable(self, "_on_animation_finished").bind("EcranTerre"))
-	menueEnd.visible = false
-	music_player.play()
-	create_grid()
 
+	menueEnd.visible = false
+	noClick.hide()
+	pause_menu.hide()
+	settings_menu.hide()
+	reset_button.hide()
+	create_grid()
+	place_bombs()
+	reveal_initial_cells()
+	update_audio_volume()
 
 	reset_button.connect("pressed", Callable(self, "_on_reset_button_pressed"))
-	reset_button.disabled = false
-	_restore_element_data()
-	set_process(true)
-
-	place_bombs() 
-	reveal_initial_cells()
-
-	reveal_button.visible = false
-	flag_button.visible = false
-
 	reveal_button.connect("pressed", Callable(self, "_on_reveal_button_pressed"))
 	flag_button.connect("pressed", Callable(self, "_on_flag_button_pressed"))
 	pause_button.connect("pressed", Callable(self, "_on_pause_button_pressed"))
 	resume_button.connect("pressed", Callable(self, "_on_resume_button_pressed"))
 	settings_button.connect("pressed", Callable(self, "_on_settings_button_pressed"))
 	back_button.connect("pressed", Callable(self, "_on_back_button_pressed"))
-	noClick.hide()
-	pause_menu.hide()
-	settings_menu.hide()
-	reset_button.hide()
-	update_audio_volume()
 
 #------------------------------- DEMINEUR ------------------------------------
 
 func create_grid():
 	var grid = $Demineur/Demineur
-	grid.columns = grid_size  
+	grid.columns = grid_size
 	for x in range(grid_size):
 		var row = []
 		for y in range(grid_size):
@@ -106,16 +106,15 @@ func create_grid():
 
 func place_bombs():
 	var pattern = [
-		[false, false, false, false, false, false, false, false],  # Ligne 0
-		[false, false, true, true, true, false, false, false],  # Ligne 1
-		[false, false, true, false, false, true, false, false],  # Ligne 2
-		[false, false, true, false, false, true, false, false],  # Ligne 3
-		[false, false, true, true, true, false, false, false],  # Ligne 4
-		[false, false, true, false, false, false, false, false],  # Ligne 5
-		[false, false, true, false, false, false, false, false],  # Ligne 6
-		[false, false, true, false, false, false, false, false]   # Ligne 7
+		[false, false, false, false, false, false, false, false],
+		[false, false, true, true, true, false, false, false],
+		[false, false, true, false, false, true, false, false],
+		[false, false, true, false, false, true, false, false],
+		[false, false, true, true, true, false, false, false],
+		[false, false, true, false, false, false, false, false],
+		[false, false, true, false, false, false, false, false],
+		[false, false, true, false, false, false, false, false]
 	]
-	
 	for x in range(grid_size):
 		for y in range(grid_size):
 			if pattern[x][y]:
@@ -184,8 +183,8 @@ func _process(delta: float) -> void:
 		var time_left = int(timer.time_left)
 		label.text = str(time_left) + " s"
 
-		# Affiche le sprite et joue l'animation quand il reste 270 secondes
 		if time_left == 270 and not sprite_shown:
+			$Error.play()
 			show_sprite_and_filter()
 
 	if Input.is_action_just_pressed("menu"):
@@ -197,8 +196,7 @@ func _process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	noClick.show()
 	_save_element_data()
-	
-	# Joue les animations "BadEnd"
+	$BadEndingV2.play()
 	ecran_ville.play("BadEnd")
 	ecran_td.play("BadEnd")
 	ecran_foret.play("BadEnd")
@@ -206,7 +204,6 @@ func _on_timer_timeout() -> void:
 	ecran_people.play("BadEnd")
 	ecran_terre.play("BadEnd")
 
-	# Commence à vérifier si toutes les animations sont terminées
 	_check_all_animations_finished()
 
 func _on_animation_finished(animation_name: String):
@@ -223,9 +220,7 @@ func _check_all_animations_finished() -> void:
 	if all_finished:
 		menueEnd.visible = true
 		reset_button.show()
-		
-		# Joue l'animation par défaut après la fin de toutes les animations
-		main_scene_animation_player.play("default")  # Assurez-vous que "default" est le nom de votre animation par défaut
+		main_scene_animation_player.play("default")
 
 func _save_element_data() -> void:
 	Manageur.saved_text = element_to_keep.text
@@ -240,19 +235,6 @@ func _on_reset_button_pressed() -> void:
 	reset_button.disabled = true
 
 #------------------------------- PAUSE ------------------------------------
-
-func _on_pause_button_pressed() -> void:
-	if is_paused:
-		timer.wait_time = remaining_time
-		timer.start()
-		is_paused = false
-		pause_menu.hide()
-	else:
-		remaining_time = timer.time_left
-		timer.stop()
-		is_paused = true
-		pause_menu.show()
-
 func pause_timer() -> void:
 	if pause_on_notes_checkbox.is_pressed(): 
 		remaining_time = timer.time_left
@@ -264,6 +246,18 @@ func resume_timer() -> void:
 		timer.wait_time = remaining_time
 		timer.start()
 		is_paused = false
+		
+func _on_pause_button_pressed() -> void:
+	if is_paused:
+		timer.wait_time = remaining_time
+		timer.start()
+		is_paused = false
+		pause_menu.hide()
+	else:
+		remaining_time = timer.time_left
+		timer.stop()
+		is_paused = true
+		pause_menu.show()
 
 func _on_resume_button_pressed() -> void:
 	if is_paused:
@@ -280,7 +274,7 @@ func _on_settings_button_pressed() -> void:
 	var sfx_slider: HSlider = settings_menu.get_node("SFXSlider")
 
 	if music_slider and sfx_slider:
-		music_slider.value = Manageur.music_volume * 100 
+		music_slider.value = Manageur.music_volume * 100
 		sfx_slider.value = Manageur.sfx_volume * 100
 
 		music_slider.connect("value_changed", Callable(self, "_on_music_slider_changed"))
@@ -293,7 +287,10 @@ func _on_back_button_pressed() -> void:
 #------------------------------- AUDIO ------------------------------------
 
 func update_audio_volume() -> void:
-	music_player.volume_db = linear_to_db(Manageur.music_volume)
+	for player in music_players:
+		if player:
+			player.volume_db = linear_to_db(Manageur.music_volume)
+
 	for player in sfx_players:
 		if player:
 			player.volume_db = linear_to_db(Manageur.sfx_volume)
@@ -310,15 +307,12 @@ func _on_sfx_slider_changed(value: float) -> void:
 
 func show_sprite_and_filter():
 	sprite_shown = true
-	ecranEtain.visible = true 
-	black_filter.visible = true 
+	ecranEtain.visible = true
+	black_filter.visible = true
 	black_filter.modulate = Color(0, 0, 0, 1)
 
-	# Jouer l'animation "coupure" sur le MainScene
 	main_scene_animation_player.play("coupure")
-
-	# Attendre que le timer de 2 secondes expire
 	await get_tree().create_timer(2.0).timeout
-	
-	black_filter.visible = false  # Cache le filtre noir
-	ecranEtain.visible = false  # Cache le sprite après le délai
+
+	black_filter.visible = false
+	ecranEtain.visible = false

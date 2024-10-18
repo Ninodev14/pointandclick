@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2da4s6gde5g7"
+path="res://.godot/imported/Fin Thanos.mp3-bcce9c889b6afd469b5317f874c59c3f.mp3str"
+
+[deps]
+
+source_file="res://Music/Fin Thanos.mp3"
+dest_files=["res://.godot/imported/Fin Thanos.mp3-bcce9c889b6afd469b5317f874c59c3f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
